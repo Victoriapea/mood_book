@@ -1,0 +1,18 @@
+<h1>Books Nominees</h1>
+
+<% if @error_message.present? %>
+  <p><%= @error_message %></p>
+<% elsif @books_data.present? %>
+  <ul>
+    <% @books_data.each do |book| %>
+      <li>
+        <strong>ID:</strong> <%= book["id"] %><br>
+        <strong>Name:</strong> <%= book["name"] %><br>
+        <strong>Author:</strong> <%= book["author"] %><br>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Aucune donnée de livre disponible.</p>
+  <p><strong>Réponse API complète :</strong> <%= response.body %></p>
+<% end %>
