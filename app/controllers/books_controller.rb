@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # app/controllers/books_controller.rb
 require 'rest-client'
 class BooksController < ApplicationController
@@ -19,4 +20,7 @@ class BooksController < ApplicationController
 
 
   end
+=======
+class BooksController < ApplicationController
+>>>>>>> a4f9cd7c288b542d175dc5819ad14fd5c8e7837d
 end

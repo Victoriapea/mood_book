@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   resources :books, only: [:index]
   # Defines the root path route ("/")
   # root "articles#index"
-  get '/fetch_api_data', to: 'books#fetch_api_data'
 end
