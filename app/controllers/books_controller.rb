@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
   def index
-    @books = fetch_books
+    if params[:query].present?
+      @books = Book.search_by_name_synopsis_author_and_mood(params[:query])
+    else
+      @books = Book.all
+    end
   end
 
   private
