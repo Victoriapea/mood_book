@@ -7,11 +7,11 @@ class BooksController < ApplicationController
   def index
     category = params[:category]
 
-    # Assurez-vous que le paramètre de requête "category" est présent
+   
     if category.present?
-      api_key = 'AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE'  # Remplacez cela par votre clé API
+      api_key = 'AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE'
 
-      # Construire l'URL de l'API Google Books avec la clé API
+
       api_url = "https://www.googleapis.com/books/v1/volumes?q=#{CGI.escape(category)}&key=#{api_key}"
 
       begin
@@ -21,12 +21,11 @@ class BooksController < ApplicationController
         @error_message = "Erreur lors de la récupération des livres: #{e.response}"
       end
     else
-      @books = Book.all
+      @error_message = "Le paramètre de requête 'category' est manquant."
     end
   end
 
   def show
     @book = Book.find(params[:id])
   end
-
 end

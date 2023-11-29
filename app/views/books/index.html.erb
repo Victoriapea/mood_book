@@ -7,6 +7,11 @@
 <% else %>
   <ul>
     <% @books.each do |book| %>
+      <%= image_tag "test.jpg", width: 280, height: 190 %>
+      <li><%= book['name'] %></li>
+      <li><%= book['author'] %></li>
+      <li><%= book['votes'] %></li>
+              <p><a href="<%= book['url'] %>">En savoir plus</a></p>
       <li>
         <strong>Title:</strong> <%= book['volumeInfo']['title'] %><br>
         <strong>Author:</strong> <%= book['volumeInfo']['authors'].join(', ') if book['volumeInfo']['authors'] %><br>

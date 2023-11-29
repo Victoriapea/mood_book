@@ -1,15 +1,16 @@
 
 <div class="container card">
             <%= image_tag "test.jpg", width: 200, height: 240, class: 'mt-3'%>
- <div class="row justify-content-center">
+ <div class="row m-3">
     <div class="col-sm-8">
       <div id="books">
-            <h1><%= @book.name %></h2>
-            <p><%= @book.synopsis %></p>
-            <p><%= @book.author %></p>
-            <p><%= @book.mood %></p>
+            <h1>Titre: <%= @book.name %></h2>
+            <p>Author: <%= @book.author %></p>
+            <p>Synopsis: <%= @book.synopsis %></p>
+            <p>Mood: <%= @book.mood %></p>
+            <%= link_to 'Revenir aux livres', books_path, class: 'btn btn-primary' %>
+            <%= link_to 'Ajouter à la Bibliothèque', '#', class: 'btn btn-primary'%>
       </div>
     </div>
   </div>
 </div>
-
