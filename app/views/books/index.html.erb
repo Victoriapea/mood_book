@@ -1,13 +1,17 @@
 <%# <% <%# <h1>Books#index</h1>
 <p>Find me in app/views/books/index.html.erb</p> %>
 <!-- app/views/books/index.html.erb -->
-<h1>Liste des Livres</h1>
 
+<!-- Lien vers la page d'accueil -->
+<a href="<%= root_path %>">Accueil</a>
+
+
+<h1>Liste des Livres</h1>
 <% if @books.present? %>
   <ul>
     <% @books.each do |book| %>
      <%= image_tag(book['cover']) %>
-      <li><%= book['name'] %></li>
+      <li>Title : <%= book['name'] %></li>
       <li><%= book['author'] %></li>
       <li><%= book['votes'] %></li>
               <p><a href="<%= book['url'] %>">En savoir plus</a></p>
