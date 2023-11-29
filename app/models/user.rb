@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  # enum read_status: { Nonlu: 'Nonlu', Lu: 'Lu' }
+
   has_many :librairies
   has_many :books, through: :librairies
   # Include default devise modules. Others available are:

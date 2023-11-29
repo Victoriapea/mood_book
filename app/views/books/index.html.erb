@@ -1,6 +1,5 @@
-<%# <% <%# <h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p> %>
 <!-- app/views/books/index.html.erb -->
+
 
 <!-- Lien vers la page d'accueil -->
 <a href="<%= root_path %>">Accueil</a>
@@ -10,8 +9,10 @@
 <% if @books.present? %>
   <ul>
     <% @books.each do |book| %>
+
      <%= image_tag(book['cover']) %>
       <li>Title : <%= book['name'] %></li>
+
       <li><%= book['author'] %></li>
       <li><%= book['votes'] %></li>
               <p><a href="<%= book['url'] %>">En savoir plus</a></p>
@@ -20,3 +21,11 @@
 <% else %>
   <p>Aucun livre trouvé.</p>
 <% end %>
+
+<h1>Categories</h1>
+
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= link_to category.capitalize, book_category_path(category: category) %></li>
+  <% end %>
+</ul>
