@@ -1,5 +1,20 @@
 <!-- app/views/books/index.html.erb -->
 
+
+<% if @books.present? %>
+  <ul>
+    <% @books.each do |book| %>
+     <%# <%= image_tag(book['cover']) %>
+      <li><%= book['name'] %></li>
+      <li><%= book['author'] %></li>
+      <li><%= book['votes'] %></li>
+              <p><a href="<%= book['url'] %>">En savoir plus</a></p>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Aucun livre trouvé.</p>
+<% end %>
+
 <h1>Categories</h1>
 
 <ul>
