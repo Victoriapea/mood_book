@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   require 'cgi'
 
   def index
-    @categories = ['science', 'fiction', 'history' , 'love'] 
+    @categories = ['science', 'fiction', 'history' , 'love','foot']
   end
 
   def show
@@ -24,4 +24,10 @@ class BooksController < ApplicationController
       @error_message = "Erreur lors de la récupération des livres: #{e.response}"
     end
   end
+
+  def add_to_library
+    book_id = params[:book_id]
+    redirect_to library_path
+  end
+
 end

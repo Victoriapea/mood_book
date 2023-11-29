@@ -1,23 +1,8 @@
-<h1>Ma Bibliothèque</h1>
-
-<div class="card mt-3" style="width: 50rem;">
-  <div class="card-body">
-    <div class="row">
-      <div class="col-md-6 text-center">
-        <%= image_tag "test.jpg", width: 300, height: 300 %>
-      </div>
-      <div class="col-md-6">
-        <% Book.take(1).each do |book| %>
-          <h2><%= book.name %></h2>
-          <p>Auteur: <%= book.author %></p>
-          <p>Synopsis: <%= book.synopsis %></p>
-          <p>Mood: <%= book.mood %></p>
-          <a href="#" class="btn btn-primary">Lu</a>
-          <a href="#" class="btn btn-primary">Non Lu</a>
-          <a href="#" class="btn btn-primary">Supprimer</a>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
+<!-- app/views/dashboards/show.html.erb -->
+<h1>My Dashboard</h1>
+<ul>
+  <% @dashboard_books.each do |dashboard_book| %>
+    <li><%= dashboard_book.book.title %></li>
+    <!-- Add other details you want to display -->
+  <% end %>
+</ul>
