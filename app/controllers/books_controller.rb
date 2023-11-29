@@ -6,23 +6,15 @@ class BooksController < ApplicationController
   require 'cgi'
 
   def index
+<<<<<<< HEAD
     @categories = ['science', 'fiction', 'history' , 'love','foot']
+=======
+>>>>>>> 0b6af6602308d8f475c1481a5cd2e72df80e2109
   end
 
   def show
     category = params[:category]
     @category = category.capitalize
-
-    api_key = 'AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE'
-
-    api_url = "https://www.googleapis.com/books/v1/volumes?q=#{CGI.escape(category)}&key=#{api_key}"
-
-    begin
-      response = RestClient.get(api_url)
-      @books = JSON.parse(response.body)['items']
-    rescue RestClient::ExceptionWithResponse => e
-      @error_message = "Erreur lors de la récupération des livres: #{e.response}"
-    end
   end
 
   def add_to_library
