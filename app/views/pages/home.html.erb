@@ -1,3 +1,28 @@
+<%= render 'shared/navbar' %>
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+
+    <% @books.each do |book| %>
+  <div class='card'>
+      <%= image_tag "test.jpg", width: 280, height: 190 %>
+      <p><%= book.name %></p>
+      <p><%= book.synopsis %></p>
+      <p><%= book.author %></p>
+      <p><%= book.mood %></p>
+    <% end %>
+  </div>
+
+  <div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i> Mood Book
+  </div>
+</div>
 
