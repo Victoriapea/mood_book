@@ -2,31 +2,10 @@
 
 
 
-<h1>Books - <%= @category.capitalize %></h1>
+<h1>Categories</h1>
 
-<% if @error_message %>
-  <p><%= @error_message %></p>
-<% else %>
-  <ul>
-    <% @books.each do |book| %>
-      <li>
-        <strong>Title:</strong> <%= book['volumeInfo']['title'] %><br>
-        <strong>Author:</strong> <%= book['volumeInfo']['authors'].join(', ') if book['volumeInfo']['authors'] %><br>
-        <strong>Description:</strong> <%= book['volumeInfo']['description'] %><br>
-
-        <% if book['volumeInfo']['imageLinks'] && book['volumeInfo']['imageLinks']['thumbnail'] %>
-          <img src="<%= book['volumeInfo']['imageLinks']['thumbnail'] %>" alt="Book Cover">
-        <% end %>
-
-        <div>
-          <strong>Published Date:</strong> <%= book['volumeInfo']['publishedDate'] %><br>
-          <strong>Page Count:</strong> <%= book['volumeInfo']['pageCount'] %><br>
-
-          <% if book['volumeInfo']['previewLink'] %>
-            <a href="<%= book['volumeInfo']['previewLink'] %>" target="_blank">View on Google Books</a><br>
-          <% end %>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= link_to category.capitalize, book_category_path(category: category) %></li>
+  <% end %>
+</ul>
