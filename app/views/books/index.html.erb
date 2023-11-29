@@ -33,7 +33,7 @@
 <% if @books.present? %>
   <ul>
     <% @books.each do |book| %>
-     <%= image_tag(book['cover']) %>
+     <%# <%= image_tag(book['cover']) %>
       <li><%= book['name'] %></li>
       <li><%= book['author'] %></li>
       <li><%= book['votes'] %></li>
