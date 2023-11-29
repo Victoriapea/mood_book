@@ -1,7 +1,25 @@
+# app/controllers/books_controller.rb
+
 class BooksController < ApplicationController
+  require 'rest-client'
+  require 'json'
+
   def index
-    if params[:query].present?
-      @books = Book.search_by_name_synopsis_author_and_mood(params[:query])
+    category = params[:category]
+
+    # Assurez-vous que le paramètre de requête "category" est présent
+    if category.present?
+      api_key = 'AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE'  # Remplacez cela par votre clé API
+
+      # Construire l'URL de l'API Google Books avec la clé API
+      api_url = "https://www.googleapis.com/books/v1/volumes?q=#{CGI.escape(category)}&key=#{api_key}"
+
+      begin
+        response = RestClient.get(api_url)
+        @books = JSON.parse(response.body)['items']
+      rescue RestClient::ExceptionWithResponse => e
+        @error_message = "Erreur lors de la récupération des livres: #{e.response}"
+      end
     else
       @books = Book.all
     end
@@ -11,25 +29,4 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-  private
-
-  def fetch_books
-
-    url = URI("https://hapi-books.p.rapidapi.com/nominees/romance/2020")
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
-
-    request = Net::HTTP::Get.new(url)
-    request["X-RapidAPI-Key"] = '4ac030e043msh588c37b3b82dc90p1eaf14jsnb60507a44b7c'
-    request["X-RapidAPI-Host"] = 'hapi-books.p.rapidapi.com'
-
-    response = http.request(request)
-
-    if response.code.to_i == 200
-      JSON.parse(response.body)
-    else
-      # Gérer les erreurs ici
-      []
-    end
-  end
 end
