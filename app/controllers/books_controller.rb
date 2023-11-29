@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   require 'cgi'
 
   def index
-    @categories = ['science', 'fiction', 'history' , 'love']
+    @categories = ['science', 'fiction', 'history', 'love']
   end
 
   def show

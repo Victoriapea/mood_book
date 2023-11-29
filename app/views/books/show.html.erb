@@ -1,24 +1,30 @@
-
 <h1>Books - <%= @category.capitalize %></h1>
 
-<div class="container card rounded-2">
 <% if @error_message %>
   <p><%= @error_message %></p>
 <% else %>
   <ul>
     <% @books.each do |book| %>
-      <li>
-        <strong>Title:</strong> <%= book['volumeInfo']['title'] %><br>
-        <strong>Author:</strong> <%= book['volumeInfo']['authors'].join(', ') if book['volumeInfo']['authors'] %><br>
-        <strong>Description:</strong> <%= book['volumeInfo']['description'] %><br>
+      <div class="container">
+        <li>
+          <strong>Title:</strong> <%= book['volumeInfo']['title'] %><br>
+          <strong>Author:</strong> <%= book['volumeInfo']['authors'].join(', ') if book['volumeInfo']['authors'] %><br>
+          <strong>Description:</strong> <%= book['volumeInfo']['description'] %><br>
 
-        <% if book['volumeInfo']['imageLinks'] && book['volumeInfo']['imageLinks']['thumbnail'] %>
-          <img src="<%= book['volumeInfo']['imageLinks']['thumbnail'] %>" alt="Book Cover">
-            <%= link_to 'Revenir aux livres', books_path, class: 'btn btn-primary' %>
-            <%= link_to 'Ajouter à la Bibliothèque', '#', class: 'btn btn-primary'%>
-        <% end %>
-      </li>
+          <% if book['volumeInfo']['imageLinks'] && book['volumeInfo']['imageLinks']['thumbnail'] %>
+            <img src="<%= book['volumeInfo']['imageLinks']['thumbnail'] %>" alt="Book Cover">
+          <% end %>
+
+          <div>
+            <strong>Published Date:</strong> <%= book['volumeInfo']['publishedDate'] %><br>
+            <strong>Page Count:</strong> <%= book['volumeInfo']['pageCount'] %><br>
+
+            <% if book['volumeInfo']['previewLink'] %>
+              <a href="<%= book['volumeInfo']['previewLink'] %>" target="_blank">View on Google Books</a><br>
+            <% end %>
+          </div>
+        </li>
+      </div>
     <% end %>
   </ul>
 <% end %>
-</div>
