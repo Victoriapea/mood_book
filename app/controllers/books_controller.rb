@@ -3,25 +3,25 @@
 class BooksController < ApplicationController
   require 'rest-client'
   require 'json'
+  require 'cgi'
 
   def index
+    @categories = ['science', 'fiction', 'history' , 'love'] 
+  end
+
+  def show
     category = params[:category]
+    @category = category.capitalize
 
-    # Assurez-vous que le paramètre de requête "category" est présent
-    if category.present?
-      api_key = 'AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE'  # Remplacez cela par votre clé API
+    api_key = 'AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE'
 
-      # Construire l'URL de l'API Google Books avec la clé API
-      api_url = "https://www.googleapis.com/books/v1/volumes?q=#{CGI.escape(category)}&key=#{api_key}"
+    api_url = "https://www.googleapis.com/books/v1/volumes?q=#{CGI.escape(category)}&key=#{api_key}"
 
-      begin
-        response = RestClient.get(api_url)
-        @books = JSON.parse(response.body)['items']
-      rescue RestClient::ExceptionWithResponse => e
-        @error_message = "Erreur lors de la récupération des livres: #{e.response}"
-      end
-    else
-      @error_message = "Le paramètre de requête 'category' est manquant."
+    begin
+      response = RestClient.get(api_url)
+      @books = JSON.parse(response.body)['items']
+    rescue RestClient::ExceptionWithResponse => e
+      @error_message = "Erreur lors de la récupération des livres: #{e.response}"
     end
   end
 end
