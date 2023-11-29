@@ -1,31 +1,27 @@
+# app/controllers/books_controller.rb
+
 class BooksController < ApplicationController
+  require 'rest-client'
+  require 'json'
+  require 'cgi'
+
   def index
-    if params[:query].present?
-      @books = Book.search_by_name_synopsis_author_and_mood(params[:query])
-    else
-      @books = Book.all
-    end
+    @categories = ['science', 'fiction', 'history' , 'love'] 
   end
 
-  private
+  def show
+    category = params[:category]
+    @category = category.capitalize
 
-  def fetch_books
+    api_key = 'AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE'
 
-    url = URI("https://hapi-books.p.rapidapi.com/nominees/romance/2020")
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
+    api_url = "https://www.googleapis.com/books/v1/volumes?q=#{CGI.escape(category)}&key=#{api_key}"
 
-    request = Net::HTTP::Get.new(url)
-    request["X-RapidAPI-Key"] = '4ac030e043msh588c37b3b82dc90p1eaf14jsnb60507a44b7c'
-    request["X-RapidAPI-Host"] = 'hapi-books.p.rapidapi.com'
-
-    response = http.request(request)
-
-    if response.code.to_i == 200
-      JSON.parse(response.body)
-    else
-      # Gérer les erreurs ici
-      []
+    begin
+      response = RestClient.get(api_url)
+      @books = JSON.parse(response.body)['items']
+    rescue RestClient::ExceptionWithResponse => e
+      @error_message = "Erreur lors de la récupération des livres: #{e.response}"
     end
   end
 end
