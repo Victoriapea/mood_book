@@ -1,0 +1,20 @@
+
+<h1>Books - <%= @category.capitalize %></h1>
+
+<% if @error_message %>
+  <p><%= @error_message %></p>
+<% else %>
+  <ul>
+    <% @books.each do |book| %>
+      <li>
+        <strong>Title:</strong> <%= book['volumeInfo']['title'] %><br>
+        <strong>Author:</strong> <%= book['volumeInfo']['authors'].join(', ') if book['volumeInfo']['authors'] %><br>
+        <strong>Description:</strong> <%= book['volumeInfo']['description'] %><br>
+
+        <% if book['volumeInfo']['imageLinks'] && book['volumeInfo']['imageLinks']['thumbnail'] %>
+          <img src="<%= book['volumeInfo']['imageLinks']['thumbnail'] %>" alt="Book Cover">
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
