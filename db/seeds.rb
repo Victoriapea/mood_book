@@ -3,6 +3,13 @@
   require 'faker'
   require 'open-uri'
 
+  api_key = 'AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE'
+
+  api_url = "https://www.googleapis.com/books/v1/volumes?q=science&key=AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE"
+
+  response = RestClient.get(api_url)
+    @books = JSON.parse(response.body)['items']
+    @categories = ['science', 'fiction', 'history' , 'love']
 
   User.create(email: "test@test.test", password: "123456")
   puts 'Creating 5 fake books...'
