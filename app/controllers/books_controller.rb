@@ -6,11 +6,11 @@ class BooksController < ApplicationController
   require 'cgi'
 
   def index
-    @books = Book.all
     @categories = ['science', 'fiction', 'history', 'love']
   end
 
   def show
+    @books = Book.all
     category = params[:category]
     @category = category.capitalize
   end
