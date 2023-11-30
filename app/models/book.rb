@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
   has_many :libraries
+  has_many :users, through: :libraries
 
   def self.find_books_by_category(category)
     where(category: category)
@@ -14,16 +15,8 @@ class Book < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-  def published_date
-    # Remplacez 'published_date' par le nom correct de votre colonne
-    self[:published_date]
-  end
-  def page_count
-    # Remplacez 'page_count' par le nom correct de votre colonne
-    self[:page_count]
-  end
-  def preview_link
-    # Remplacez 'preview_link' par le nom correct de votre colonne
-    self[:preview_link]
-  end
+
+    def read
+      read_attribute(:read)
+    end
 end
