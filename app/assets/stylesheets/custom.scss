@@ -1,0 +1,41 @@
+.cards-mood {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card-mood {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card-body {
+  padding: 50px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-top: 23px;
+}
+
+.card-text {
+  color: #555;
+}
+
+.card-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
