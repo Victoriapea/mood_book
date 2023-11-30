@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_29_222844) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_30_150037) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_29_222844) do
     t.date "published_date"
     t.integer "page_count"
     t.string "preview_link"
+    t.boolean "read"
   end
 
   create_table "libraries", force: :cascade do |t|

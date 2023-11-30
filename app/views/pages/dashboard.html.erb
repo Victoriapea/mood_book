@@ -1,33 +1,29 @@
-<%= render 'shared/navbar' %>
-<h1>Ma Bibliothèque</h1>
+<h1>Ma biblio</h1>
 
-<div class="card mt-3" style="width: 50rem;">
-  <div class="card-body">
-    <div class="row">
-      <div class="col-md-6 text-center">
-        <%= image_tag "test.jpg", width: 300, height: 300 %>
-      </div>
-      <div class="col-md-6">
-        <% Book.take(1).each do |book| %>
-          <h2><%= book.name %></h2>
-          <p>Auteur: <%= book.author %></p>
-          <p>Synopsis: <%= book.synopsis %></p>
-          <p>Mood: <%= book.mood %></p>
-          <div class="toggle-switch">
-            <span class="toggle-label-text">Lu</span>
-            <label class="toggle">
-              <input type="checkbox">
-              <span class="toggle-slider"></span>
-            </label>
-            <span class="toggle-label-text">Non lu</span>
-          </div>
-          <div class="button-delete">
-            <%= button_to "Supprimer", book_path(book), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce livre ?' }, class: 'btn btn-primary' %>
-          </div>
+<div class="cards-mood">
+  <% current_user.books.each do |book| %>
+    <div class="card-mood">
+      <div>
+        <% if book.image.present? %>
+          <img src="<%= book.image %>" alt="Book Cover">
         <% end %>
       </div>
+      <strong>Title:</strong> <%= book.name %><br>
+
+      <!-- Toggle switch for marking as read/unread -->
+      <div class="toggle-switch">
+        <span class="toggle-label-text">Lu</span>
+        <label class="toggle">
+          <input type="checkbox" <%= 'checked' if book.read %>><!-- Assuming you have a 'read' attribute in your Book model -->
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="toggle-label-text">Non lu</span>
+      </div>
+
+      <!-- Form for deleting the book from the library -->
+      <%= form_with(model: book, url: library_destroy_book_path(id: book.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' }) do |form| %>
+        <%= form.submit "Remove from Library", class: "btn btn-danger" %>
+      <% end %>
     </div>
-  </div>
-
-
-<%# Penser à Render le footer %>
+  <% end %>
+</div>

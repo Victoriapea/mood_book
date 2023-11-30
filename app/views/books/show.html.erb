@@ -1,4 +1,15 @@
-<!-- Votre vue -->
+<% if flash[:notice].present? && flash[:book_id] %>
+  <!-- Display book information -->
+  <%= render partial: 'library/book_info', locals: { book: Book.find(flash[:book_id]) } %>
+<% else %>
+  <%= flash[:notice].html_safe if flash[:notice].present? %>
+<% end %>
+
+
+
+
+
+
 <div class="cards-mood">
   <% @books.each do |book| %>
     <div class="card-mood">
@@ -21,6 +32,12 @@
         <% if book.preview_link.present? %>
           <a href="<%= book.preview_link %>" target="_blank">View on Google Books</a><br>
         <% end %>
+
+        <!-- Add the form for adding to library -->
+        <%= form_with(model: book, url: add_book_to_library_path(id: book.id), method: :post) do |form| %>
+  <%= form.submit "Add to Library" %>
+<% end %>
+
       </div>
     </div>
   <% end %>

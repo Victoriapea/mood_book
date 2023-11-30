@@ -1,0 +1,10 @@
+<!-- app/views/library/show.html.erb -->
+<div class="cards-mood">
+  <% current_user.books.each do |book| %>
+    <div class="card-mood">
+      <!-- Affichez les détails du livre ici -->
+      <strong>Title:</strong> <%= book.name %><br>
+
+    </div>
+  <% end %>
+</div>
