@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get :dashboard, to: "pages#dashboard"
 
+  resources :questionnaires, only: [:new, :create]
   resources :books, only: [:index, :destroy]
   get 'books/:category', to: 'books#show', as: :book_category
 
