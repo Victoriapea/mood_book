@@ -1,25 +1,40 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-  require 'faker'
-  require 'open-uri'
+require 'faker'
+require 'open-uri'
 
-  api_key = 'AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE'
+api_key = 'AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE'
+categories = ['science', 'fiction', 'history', 'love']
 
-  api_url = "https://www.googleapis.com/books/v1/volumes?q=science&key=AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE"
+moods = ['happy', 'sad', 'excited', 'calm', 'serious']
 
+categories.each do |category|
+  api_url = "https://www.googleapis.com/books/v1/volumes?q=#{category}&key=#{api_key}"
   response = RestClient.get(api_url)
-    @books = JSON.parse(response.body)['items']
-    @categories = ['science', 'fiction', 'history' , 'love']
 
-  User.create(email: "test@test.test", password: "123456")
-  puts 'Creating 5 fake books...'
-  5.times do
-    book = Book.new(
-      name: Faker::Book.title,
-      synopsis: " #{Faker::Lorem.paragraph} ",
-      author: Faker::Book.author,
-      mood: Faker::Emotion.noun
-    )
-    book.save!
+  if response.code == 200
+    books_data = JSON.parse(response.body)['items']
+    puts "Books for #{category}:"
+
+    if books_data.present?
+
+      books_data.each do |book_data|
+        image_thumbnail = book_data['volumeInfo']['imageLinks']&.fetch('thumbnail', nil)
+        authors = book_data['volumeInfo']['authors'] || []
+
+        Book.create(
+          name: book_data['volumeInfo']['title'],
+          synopsis: book_data['volumeInfo']['description'] || 'No description available',
+          author: authors.join(', '),
+          mood: moods.sample,
+          category: category,
+          image: image_thumbnail,
+        )
+      end
+    else
+      puts "  No books found for #{category}."
+    end
+  else
+    puts "Error fetching books for #{category}: #{response.code}"
   end
-  puts 'Finished!'
+end
+
+puts 'Seed data created!'

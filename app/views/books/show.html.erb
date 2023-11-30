@@ -1,47 +1,23 @@
-<<<<<<< HEAD
-<!-- app/views/books/show.html.erb -->
+<% @books.each do |book| %>
+  <li>
+    <strong>Title:</strong> <%= book.name %><br>
+    <strong>Author:</strong> <%= book.author %><br>
+    <strong>Description:</strong> <%= book.synopsis %><br>
 
-=======
->>>>>>> 0b6af6602308d8f475c1481a5cd2e72df80e2109
-<h1>Books - <%= @category.capitalize %></h1>
-<% if @error_message %>
-  <p><%= @error_message %></p>
-<% else %>
-  <ul>
-    <% @books.each do |book| %>
-      <li>
-        <strong>Title:</strong> <%= book['volumeInfo']['title'] %><br>
-        <strong>Author:</strong> <%= book['volumeInfo']['authors'].join(', ') if book['volumeInfo']['authors'] %><br>
-        <strong>Description:</strong> <%= book['volumeInfo']['description'] %><br>
-        <% if book['volumeInfo']['imageLinks'] && book['volumeInfo']['imageLinks']['thumbnail'] %>
-          <img src="<%= book['volumeInfo']['imageLinks']['thumbnail'] %>" alt="Book Cover">
-        <% end %>
-<<<<<<< HEAD
-
-        <!-- Additional details for each book -->
-        <div>
-          <strong>Published Date:</strong> <%= book['volumeInfo']['publishedDate'] %><br>
-          <strong>Page Count:</strong> <%= book['volumeInfo']['pageCount'] %><br>
-          <!-- Add more details as needed -->
-
-          <!-- You can also add a link to view more details on the Google Books website -->
-=======
-        <div>
-          <strong>Published Date:</strong> <%= book['volumeInfo']['publishedDate'] %><br>
-          <strong>Page Count:</strong> <%= book['volumeInfo']['pageCount'] %><br>
->>>>>>> 0b6af6602308d8f475c1481a5cd2e72df80e2109
-          <% if book['volumeInfo']['previewLink'] %>
-            <a href="<%= book['volumeInfo']['previewLink'] %>" target="_blank">View on Google Books</a><br>
-          <% end %>
-        </div>
-<<<<<<< HEAD
-        <%= form_tag(add_to_library_path, method: :post) do %>
-        <%= hidden_field_tag :book_id, book['id'] %>
-        <%= submit_tag "Ajouter à la bibliothèque" %>
-      <% end %>
-=======
->>>>>>> 0b6af6602308d8f475c1481a5cd2e72df80e2109
-      </li>
+    <!-- Display book image if available -->
+    <% if book.image.present? %>
+      <img src="<%= book.image %>" alt="Book Cover">
     <% end %>
-  </ul>
+
+    <!-- Additional details for each book -->
+    <div>
+      <!-- Add more details as needed -->
+
+      <!-- You can also add a link to view more details on the Google Books website -->
+      <% if book.preview_link.present? %>
+        <a href="<%= book.preview_link %>" target="_blank">View on Google Books</a><br>
+      <% end %>
+
+    </div>
+  </li>
 <% end %>

@@ -15,4 +15,9 @@ Rails.application.routes.draw do
   post 'add_to_library', to: 'books#add_to_library', as: 'add_to_library'
   get 'library', to: 'library#index', as: 'library'  # Ajoutez cette route pour afficher la bibliothèque
 
+
+  get '/books/science', to: 'books#science', as: 'science_books'
+  get '/books/fiction', to: 'books#fiction', as: 'fiction_books'
+  get '/books/:category', to: 'books#show_by_category', as: 'books_by_category'
+
 end

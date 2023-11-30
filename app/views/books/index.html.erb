@@ -1,36 +1,9 @@
-<!-- app/views/books/index.html.erb -->
 
-<<<<<<< HEAD
-=======
-
-<!-- Lien vers la page d'accueil -->
-<a href="<%= root_path %>">Accueil</a>
-
-
-<h1>Liste des Livres</h1>
-<% if @books.present? %>
-  <ul>
-    <% @books.each do |book| %>
-
-     <%= image_tag(book['cover']) %>
-      <li>Title : <%= book['name'] %></li>
-
-      <li><%= book['author'] %></li>
-      <li><%= book['votes'] %></li>
-              <p><a href="<%= book['url'] %>">En savoir plus</a></p>
-    <% end %>
-  </ul>
-<% else %>
-  <p>Aucun livre trouvé.</p>
-<% end %>
-
->>>>>>> 0b6af6602308d8f475c1481a5cd2e72df80e2109
 <h1>Categories</h1>
-
 <ul>
   <% @categories.each do |category| %>
-    <li><%= link_to category.capitalize, book_category_path(category: category) %></li>
+    <li>
+      <%= link_to category.capitalize, book_category_path(category: category) %>
+    </li>
   <% end %>
-
-
 </ul>
