@@ -2,10 +2,10 @@
 <div class="cards-mood">
   <% @books.each do |book| %>
     <div class="card-mood">
-    <div>
-       <% if book.image.present? %>
-        <img src="<%= book.image %>" alt="Book Cover">
-      <% end %>
+      <div>
+        <% if book.image.present? %>
+          <img src="<%= book.image %>" alt="Book Cover">
+        <% end %>
       </div>
       <strong>Title:</strong> <%= book.name %><br>
       <strong>Author:</strong> <%= book.author %><br>
@@ -13,9 +13,11 @@
 
       <!-- Display book image if available -->
 
-
       <!-- Additional details for each book -->
       <div>
+        <!-- Add more details as needed -->
+        <strong>Page Count:</strong> <%= book.page_count %><br>
+        <!-- You can also add a link to view more details on the Google Books website -->
         <% if book.preview_link.present? %>
           <a href="<%= book.preview_link %>" target="_blank">View on Google Books</a><br>
         <% end %>
