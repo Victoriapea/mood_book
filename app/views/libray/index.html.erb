@@ -1,0 +1,16 @@
+<!-- app/views/library/index.html.erb -->
+
+<h1>Ma Bibliothèque</h1>
+
+<% if @library_books.any? %>
+  <ul>
+    <% @library_books.each do |book| %>
+      <li>
+        <!-- Affichez les détails du livre de la bibliothèque selon votre structure de données -->
+        <%= book.title %> - <%= book.author %> <!-- Adapter en fonction de votre modèle de livre -->
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Votre bibliothèque est vide.</p>
+<% end %>
