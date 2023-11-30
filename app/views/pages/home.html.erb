@@ -9,14 +9,19 @@
       <li><%= book.author %></li>
       <li><%= book.synopsis %></li>
       <li><%= book.mood %></li>
-      <li><%= book.votes %></li>
-      <p><a href="<%= book.url %>">En savoir plus</a></p>
     <% end %>
   </ul>
 <% else %>
   <p>Aucun livre trouvé.</p>
 <% end %>
 
+
+<div class="video-container">
+  <video autoplay muted loop id="bg-video">
+    <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
   <div class="footer">
   <div class="footer-links">
