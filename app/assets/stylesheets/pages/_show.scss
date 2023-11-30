@@ -1,0 +1,12 @@
+.container-test {
+  .box{
+    display: flex;
+    flex-wrap: wrap;
+    img {
+      max-width: 20vw;
+    }
+    .card {
+      max-width: 20vw;
+    }
+  }
+}
