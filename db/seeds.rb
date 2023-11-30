@@ -1,5 +1,9 @@
 require 'faker'
 require 'open-uri'
+
+puts 'Creating user'
+User.create(email: "test@test.test", password: "123456")
+puts 'Done creating'
 api_key = 'AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE'
 categories = ['happy', 'sad', 'excited', 'calm', 'serious']
 moods = ['happy', 'sad', 'excited', 'calm', 'serious']
