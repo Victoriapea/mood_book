@@ -6,7 +6,7 @@ class QuestionnairesController < ApplicationController
   end
 
   def create
-    @questionnaire = current_user.build_questionnaire(questionnaire_params)
+    @questionnaire = Questionnaire.new(questionnaire_params.merge(user: current_user))
     if @questionnaire.save
       redirect_to root_path
     else
