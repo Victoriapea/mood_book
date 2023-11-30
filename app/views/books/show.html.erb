@@ -1,24 +1,25 @@
-<h1>mood</h1>
-<% @books.each do |book| %>
-  <li>
-    <strong>Title:</strong> <%= book.name %><br>
-    <strong>Author:</strong> <%= book.author %><br>
-    <strong>Description:</strong> <%= book.synopsis %><br>
-
-    <!-- Display book image if available -->
-    <% if book.image.present? %>
-      <img src="<%= book.image %>" alt="Book Cover">
-    <% end %>
-
-    <!-- Additional details for each book -->
+<!-- Votre vue -->
+<div class="cards-mood">
+  <% @books.each do |book| %>
+    <div class="card-mood">
     <div>
-      <!-- Add more details as needed -->
-
-      <!-- You can also add a link to view more details on the Google Books website -->
-      <% if book.preview_link.present? %>
-        <a href="<%= book.preview_link %>" target="_blank">View on Google Books</a><br>
+       <% if book.image.present? %>
+        <img src="<%= book.image %>" alt="Book Cover">
       <% end %>
+      </div>
+      <strong>Title:</strong> <%= book.name %><br>
+      <strong>Author:</strong> <%= book.author %><br>
+      <strong>Description:</strong> <%= book.synopsis %><br>
 
+      <!-- Display book image if available -->
+
+
+      <!-- Additional details for each book -->
+      <div>
+        <% if book.preview_link.present? %>
+          <a href="<%= book.preview_link %>" target="_blank">View on Google Books</a><br>
+        <% end %>
+      </div>
     </div>
-  </li>
-<% end %>
+  <% end %>
+</div>
