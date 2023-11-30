@@ -15,4 +15,9 @@ class BooksController < ApplicationController
     puts "Category: #{@category}"
   end
 
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to dashboard_path, notice: "Le livre a été supprimé avec succès", status: :see_other
+  end
 end
