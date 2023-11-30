@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   require 'cgi'
 
   def index
-    @categories = ['science', 'fiction', 'history' , 'love','foot']
+    @categories = ['happy', 'sad', 'excited', 'calm', 'serious']
   end
   def show
     @category = params[:category]
