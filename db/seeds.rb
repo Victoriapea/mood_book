@@ -1,10 +1,7 @@
 require 'faker'
 require 'open-uri'
-
-
-
 api_key = 'AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE'
-categories = ['science', 'fiction', 'history', 'love']
+categories = ['happy', 'sad', 'excited', 'calm', 'serious']
 
 moods = ['happy', 'sad', 'excited', 'calm', 'serious']
 
@@ -20,7 +17,7 @@ categories.each do |category|
 
       books_data.each do |book_data|
         image_thumbnail = book_data['volumeInfo']['imageLinks']&.fetch('thumbnail', nil)
-        authors = book_data['volumeInfo']['authors'] || 
+        authors = book_data['volumeInfo']['authors'] ||
         Book.create(
           name: book_data['volumeInfo']['title'],
           synopsis: book_data['volumeInfo']['description'] || 'No description available',
