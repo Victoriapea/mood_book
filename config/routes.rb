@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get :dashboard, to: "pages#dashboard"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :books, only: [:index]
+  resources :books, only: [:index, :destroy]
   get 'books/:category', to: 'books#show', as: :book_category
 
 
