@@ -1,3 +1,4 @@
+
 <!-- app/views/books/index.html.erb -->
 
 
@@ -23,9 +24,10 @@
 <% end %>
 
 <h1>Categories</h1>
-
 <ul>
   <% @categories.each do |category| %>
-    <li><%= link_to category.capitalize, book_category_path(category: category) %></li>
+    <li>
+      <%= link_to category.capitalize, book_category_path(category: category) %>
+    </li>
   <% end %>
 </ul>
