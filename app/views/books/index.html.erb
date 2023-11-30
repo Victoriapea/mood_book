@@ -5,12 +5,13 @@
 <a href="<%= root_path %>">Accueil</a>
 
 
+
 <h1>Liste des Livres</h1>
 <% if @books.present? %>
   <ul>
     <% @books.each do |book| %>
 
-    
+
       <li>Title : <%= book['name'] %></li>
 
       <li><%= book['author'] %></li>
