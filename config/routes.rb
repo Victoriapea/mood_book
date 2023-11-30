@@ -1,5 +1,4 @@
 # config/routes.rb
-
 Rails.application.routes.draw do
   get 'books/index'
   devise_for :users
