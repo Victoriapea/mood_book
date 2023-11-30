@@ -7,11 +7,17 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
-    @categories = ['science', 'fiction', 'history' , 'love']
+    @categories = ['science', 'fiction', 'history', 'love']
   end
 
   def show
     category = params[:category]
     @category = category.capitalize
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to dashboard_path, notice: "Le livre a été supprimé avec succès", status: :see_other
   end
 end

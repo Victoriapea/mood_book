@@ -13,11 +13,23 @@
           <p>Auteur: <%= book.author %></p>
           <p>Synopsis: <%= book.synopsis %></p>
           <p>Mood: <%= book.mood %></p>
-          <a href="#" class="btn btn-primary">Lu</a>
-          <a href="#" class="btn btn-primary">Non Lu</a>
-          <a href="#" class="btn btn-primary">Supprimer</a>
+          <div class="toggle-switch">
+            <span class="toggle-label-text">Lu</span>
+            <label class="toggle">
+              <input type="checkbox">
+              <span class="toggle-slider"></span>
+            </label>
+            <span class="toggle-label-text">Non lu</span>
+          </div>
+          <div class="button-delete">
+            <%= button_to "Supprimer", book_path(book), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce livre ?' }, class: 'btn btn-primary' %>
+          </div>
         <% end %>
       </div>
     </div>
   </div>
+</div>
 
+
+<%# Penser à Render le footer %>
+  
