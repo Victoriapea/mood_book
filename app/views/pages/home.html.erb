@@ -1,10 +1,33 @@
+<%= render 'shared/navbar' %>
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<h1>Categories</h1>
 
-<ul>
-  <% @categories.each do |category| %>
-    <li><%= link_to category.capitalize, book_category_path(category: category) %></li>
-  <% end %>
-</ul>
+<% if @books.present? %>
+  <ul>
+    <% @books.each do |book| %>
+      <li><%= book.name %></li>
+      <li><%= book.author %></li>
+      <li><%= book.synopsis %></li>
+      <li><%= book.mood %></li>
+      <li><%= book.votes %></li>
+      <p><a href="<%= book.url %>">En savoir plus</a></p>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Aucun livre trouvé.</p>
+<% end %>
+
+
+  <div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i> Mood Book
+  </div>
+</div>
