@@ -3,15 +3,21 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 
 
+<% if @books.present? %>
+  <ul>
     <% @books.each do |book| %>
-  <div class='card'>
-      <%= image_tag "test.jpg", width: 280, height: 190 %>
-      <p><%= book.name %></p>
-      <p><%= book.synopsis %></p>
-      <p><%= book.author %></p>
-      <p><%= book.mood %></p>
+      <li><%= book.name %></li>
+      <li><%= book.author %></li>
+      <li><%= book.synopsis %></li>
+      <li><%= book.mood %></li>
+      <li><%= book.votes %></li>
+      <p><a href="<%= book.url %>">En savoir plus</a></p>
     <% end %>
-  </div>
+  </ul>
+<% else %>
+  <p>Aucun livre trouvé.</p>
+<% end %>
+
 
   <div class="footer">
   <div class="footer-links">
@@ -25,4 +31,3 @@
     This footer is made with <i class="fas fa-heart"></i> Mood Book
   </div>
 </div>
-

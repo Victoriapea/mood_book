@@ -7,6 +7,8 @@ class BooksController < ApplicationController
 
   def index
     @categories = ['science', 'fiction', 'history' , 'love','foot']
+    @books = Book.all
+    @categories = ['science', 'fiction', 'history' , 'love']
   end
   def show
     @category = params[:category]
