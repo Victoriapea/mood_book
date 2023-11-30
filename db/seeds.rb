@@ -1,7 +1,7 @@
 require 'faker'
 require 'open-uri'
 api_key = 'AIzaSyBwshVXgMANcDkVDw-R-mnQ6lmIKljX6gE'
-categories = ['science', 'fiction', 'history', 'love']
+categories = ['happy', 'sad', 'excited', 'calm', 'serious']
 
 moods = ['happy', 'sad', 'excited', 'calm', 'serious']
 
