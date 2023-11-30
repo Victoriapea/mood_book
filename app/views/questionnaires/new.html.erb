@@ -1,0 +1,31 @@
+<h1>Questionnaire</h1>
+
+<%= form_with(model: @questionnaire, url: questionnaires_path, method: :post) do |form| %>
+  <div class="container">
+    <%= form.label :question1, 'Question 1 : Préférez-vous les livres courts ou longs ?' %>
+    <div class="form-check">
+      <%= form.radio_button :question1, 'Livres longs' %> Livres longs
+      <%= form.radio_button :question1, 'Livres courts' %> Livres courts
+     </div>
+  </div>
+
+  <div class="container">
+    <%= form.label :question2, 'Question 2 : Aimez-vous lire des livres dans des genres variés ou préférez-vous vous en tenir à un genre spécifique ?' %>
+    <div class="form-check">
+      <%= form.radio_button :question2, 'Genres variés' %> Genres variés
+      <%= form.radio_button :question2, 'Genres spécifique' %> Genre spécifiques
+    </div>
+  </div>
+
+  <div class="container">
+    <%= form.label :question3, 'Question 3 : Êtes-vous attiré par des livres qui ont été des best-sellers ?' %>
+    <div class="form-check">
+      <%= form.radio_button :question3, 'Plutôt oui' %> Plutôt oui
+      <%= form.radio_button :question3, 'Pas du tout' %> Pas du tout
+    </div>
+  </div>
+
+  <div class="form-submit-button">
+    <%= form.submit 'Envoyer', class: "btn btn-primary"  %>
+  </div>
+<% end %>
