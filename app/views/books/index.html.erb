@@ -1,3 +1,29 @@
+<!-- app/views/books/index.html.erb -->
+
+
+<!-- Lien vers la page d'accueil -->
+<a href="<%= root_path %>">Accueil</a>
+
+
+
+<h1>Liste des Livres</h1>
+<% if @books.present? %>
+  <ul>
+    <% @books.each do |book| %>
+
+
+      <li>Title : <%= book['name'] %></li>
+
+      <li><%= book['author'] %></li>
+      <li><%= book['votes'] %></li>
+              <p><a href="<%= book['url'] %>">En savoir plus</a></p>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Aucun livre trouvé.</p>
+<% end %>
+
+
 <h1>Categories</h1>
 <ul>
   <% @categories.each do |category| %>
