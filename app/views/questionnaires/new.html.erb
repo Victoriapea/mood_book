@@ -1,0 +1,57 @@
+<h1>Questionnaire</h1>
+
+<div class="container" style="width: 50rem;">
+  <%= form_for @questionnaire, url: questionnaires_path, html: { method: :post } do |form| %>
+    <div class="form">
+      <%= form.label :question1, 'Question 1 : Préférez-vous les livres courts ou longs ?' %>
+      <div class="radio-input-wrapper">
+        <label class="label">
+          <%= form.radio_button :question1, 'Livres longs', id: "value-2", class: "radio-input" %>
+          <div class="radio-design"></div>
+          <div class="label-text">Livres longs</div>
+        </label>
+        <label class="label">
+          <%= form.radio_button :question1, 'Livres courts', id: "value-3", class: "radio-input" %>
+          <div class="radio-design"></div>
+          <div class="label-text">Livres courts</div>
+        </label>
+      </div>
+    </div>
+
+    <div class="form">
+      <%= form.label :question2, 'Question 2 : Aimez-vous lire des livres dans des genres variés ou préférez-vous vous en tenir à un genre spécifique ?' %>
+      <div class="radio-input-wrapper">
+        <label class="label">
+          <%= form.radio_button :question2, 'Genres variés', id: "value-4", class: "radio-input" %>
+          <div class="radio-design"></div>
+          <div class="label-text">Genres variés</div>
+        </label>
+        <label class="label">
+          <%= form.radio_button :question2, 'Genres spécifique', id: "value-5", class: "radio-input" %>
+          <div class="radio-design"></div>
+          <div class="label-text">Genres spécifiques</div>
+        </label>
+      </div>
+    </div>
+
+    <div class="form">
+      <%= form.label :question3, 'Question 3 : Êtes-vous attiré par des livres qui ont été des best-sellers ?' %>
+      <div class="radio-input-wrapper">
+        <label class="label">
+          <%= form.radio_button :question3, 'Plutôt oui', id: "value-6", class: "radio-input" %>
+          <div class="radio-design"></div>
+          <div class="label-text">Plutôt oui</div>
+        </label>
+        <label class="label">
+          <%= form.radio_button :question3, 'Pas du tout', id: "value-7", class: "radio-input" %>
+          <div class="radio-design"></div>
+          <div class="label-text">Pas du tout</div>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-submit-button">
+      <%= form.submit 'Envoyer', class: "btn btn-primary"%>
+    </div>
+  <% end %>
+</div>

@@ -10,6 +10,5 @@ Rails.application.routes.draw do
 
   # Ajouter la route delete pour la bibliothèque
   delete '/library/destroy_book/:id', to: 'library#destroy_book', as: 'library_destroy_book'
-
   post '/library/add_book/:id', to: 'library#add_book', as: 'add_book_to_library'
 end
