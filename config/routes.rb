@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   get :dashboard, to: "pages#dashboard"
-  resources :questionnaire, only: %i[new show create]
 
-  resources :books, only: %i[index destroy]
+  resources :questionnaires, only: [:new, :create]
+  resources :books, only: [:index, :destroy]
   get 'books/:category', to: 'books#show', as: :book_category
 
   # Ajouter la route delete pour la bibliothèque
