@@ -1,19 +1,28 @@
 <%= render 'shared/navbar' %>
 <%= render 'shared/footer' %>
 
+<h1>Recommandations de Livres</h1>
 
-<% if @books.present? %>
-  <ul>
-    <% @books.each do |book| %>
-      <li><%= book.name %></li>
-      <li><%= book.author %></li>
-      <li><%= book.synopsis %></li>
-      <li><%= book.mood %></li>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="<%= @books.second.image %>" class="d-block" alt="<%= @books.second.name %>">
+    </div>
+    <% @books[2..5].each do |book| %>
+      <div class="carousel-item">
+        <img src="<%= book.image %>" class="d-block" alt="<%= book.name %>">
+      </div>
     <% end %>
-  </ul>
-<% else %>
-  <p>Aucun livre trouvé.</p>
-<% end %>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
 
 <div class="video-container">
