@@ -1,34 +1,18 @@
+<%= render 'shared/navbar' %>
 
 <!-- Lien vers la page d'accueil -->
 <a href="<%= root_path %>">Accueil</a>
 
-<h1>Liste des Livres</h1>
-<% if @books.present? %>
-  <ul>
-    <% @books.each do |book| %>
+<div class="container m-2">
+  <h1 class='m-3'>Categories</h1>
 
+  <% @categories.each do |category| %>
+    <% background_image = @category_backgrounds[category] %>
 
-      <li>Title : <%= book['name'] %></li>
-
-      <li><%= book['author'] %></li>
-      <li><%= book['votes'] %></li>
-              <p><a href="<%= book['url'] %>">En savoir plus</a></p>
-    <% end %>
-  </ul>
-<% else %>
-  <p>Aucun livre trouvé.</p>
-<% end %>
-
-<div class="container">
-  <h1 class='mt-2'>Categories</h1>
-
-    <% @categories.each do |category| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.alwaysonpurpose.com/wp-content/uploads/2019/11/happypeople-1024x679.jpg)">
-        <p>
-          <%= link_to category.capitalize, book_category_path(category: category), class:'text-decoration-none text-white text-uppercase' %>
-        </p>
-      </div>
-    <% end %>
-
+      <div class="card-category" style="background-image: <%= background_image %>">
+      <p>
+        <%= link_to category.capitalize, book_category_path(category: category), class:'text-decoration-none text-black text-uppercase' %>
+      </p>
+    </div>
+  <% end %>
 </div>
-</ul>

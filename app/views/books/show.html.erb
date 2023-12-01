@@ -5,11 +5,6 @@
   <%= flash[:notice].html_safe if flash[:notice].present? %>
 <% end %>
 
-
-
-
-
-
 <div class="cards-mood">
   <% @books.each do |book| %>
     <div class="card-mood">
@@ -22,18 +17,13 @@
       <strong>Author:</strong> <%= book.author %><br>
       <strong>Description:</strong> <%= book.synopsis %><br>
 
-      <!-- Display book image if available -->
-
-      <!-- Additional details for each book -->
       <div>
         <!-- Add more details as needed -->
         <strong>Page Count:</strong> <%= book.page_count %><br>
-        <!-- You can also add a link to view more details on the Google Books website -->
         <% if book.preview_link.present? %>
           <a href="<%= book.preview_link %>" target="_blank">View on Google Books</a><br>
         <% end %>
 
-        <!-- Add the form for adding to library -->
         <%= form_with(model: book, url: add_book_to_library_path(id: book.id), method: :post) do |form| %>
   <%= form.submit "Add to Library" %>
 <% end %>

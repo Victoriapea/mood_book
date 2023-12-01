@@ -8,7 +8,7 @@ class QuestionnairesController < ApplicationController
   def create
     @questionnaire = Questionnaire.new(questionnaire_params.merge(user: current_user))
     if @questionnaire.save
-      redirect_to root_path
+      redirect_to books_path
     else
       render :new
     end
