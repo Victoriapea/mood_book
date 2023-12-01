@@ -8,26 +8,34 @@
 <div class="cards-mood">
   <% @books.each do |book| %>
     <div class="card-mood">
-      <div>
+      <div class="book-image">
         <% if book.image.present? %>
           <img src="<%= book.image %>" alt="Book Cover">
         <% end %>
       </div>
-      <strong>Title:</strong> <%= book.name %><br>
-      <strong>Author:</strong> <%= book.author %><br>
-      <strong>Description:</strong> <%= book.synopsis %><br>
 
-      <div>
+      <div class="book-details">
+         <span class="book-title"><%= book.name %></span><br>
+        <div class="space"></div>
+        <span class="book-author"><%= book.author %></span><br>
+        <div class="space"></div>
+        <span class="book-description"><%= book.synopsis %></span><br>
+
         <!-- Add more details as needed -->
-        <strong>Page Count:</strong> <%= book.page_count %><br>
-        <% if book.preview_link.present? %>
-          <a href="<%= book.preview_link %>" target="_blank">View on Google Books</a><br>
+        <div class="space"></div>
+        <span class="book-nmbr"><%= book.page_count %></span><br>
+
+
+       <% if book.preview_link.present? %>
+          <div class="space"></div> <!-- Ajout d'un espace avant le lien -->
+          <a href="<%= book.preview_link %>" target="_blank" class="styled-link">View on Google Books</a><br>
+      <% end %>
+
+
+        <%= form_with(model: book, url: add_book_to_library_path(id: book.id), method: :post, class: "library-form") do |form| %>
+         <div class="space"></div>
+          <%= form.submit "Add to Library" %>
         <% end %>
-
-        <%= form_with(model: book, url: add_book_to_library_path(id: book.id), method: :post) do |form| %>
-  <%= form.submit "Add to Library" %>
-<% end %>
-
       </div>
     </div>
   <% end %>

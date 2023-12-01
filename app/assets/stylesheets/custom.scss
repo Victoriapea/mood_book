@@ -7,7 +7,7 @@
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -38,4 +38,60 @@
 
 .card-link:hover {
   text-decoration: underline;
+}
+
+.library-form input[type="submit"] {
+  background-color: #a4988a;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.library-form input[type="submit"]:hover {
+  background-color: #a38968;
+}
+
+
+.book-details {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.space {
+  margin-top: 10px;
+}
+.styled-link {
+  color: #a4988a;
+  font-size: 16px;
+  font-weight: bold;
+    text-decoration: none;
+}
+
+.styled-link:hover {
+  text-decoration: underline;
+  color: #a38968;
+}
+
+
+.book-title {
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+}
+.book-author {
+  color: #555;
+  font-size: 16px;
+  font-weight: normal;
+}
+.book-description {
+  color: #777;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.book-nmbr {
+  color: #666;
+  font-size: 15px;
+  font-weight: 800;
 }
