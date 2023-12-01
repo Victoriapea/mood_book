@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   require 'cgi'
 
   def index
+    @books = Book.all
     @categories = ['happy', 'sad', 'excited', 'calm', 'serious']
     @category_backgrounds = determine_category_backgrounds
 
