@@ -1,5 +1,7 @@
 <%= render 'shared/navbar' %>
 <%= render 'shared/footer' %>
+<h1>MooD BooK</h1>
+
 
 <h1>Recommandations de Livres</h1>
 
@@ -25,9 +27,20 @@
 </div>
 
 
+
 <div class="video-container">
   <video autoplay muted loop id="bg-video">
     <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </div>
+
+
+<section class="mood">
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <p class="card-text">Quelle est votre humeur du jour?</p>
+    <a href="<%= new_questionnaire_path %>" class="card-link">Questionnaire</a>
+  </div>
+</div>
+</section>
