@@ -8,6 +8,7 @@ class BooksController < ApplicationController
   def index
     @categories = ['happy', 'sad', 'excited', 'calm', 'serious']
     @category_backgrounds = determine_category_backgrounds
+
   end
   def show
     @category = params[:category]

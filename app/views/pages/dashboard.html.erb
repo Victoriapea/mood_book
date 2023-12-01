@@ -20,6 +20,7 @@
         <span class="toggle-label-text">Non lu</span>
       </div>
 
+<%= render 'shared/footer' %>
       <!-- Form for deleting the book from the library -->
       <%= form_with(model: book, url: library_destroy_book_path(id: book.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' }) do |form| %>
         <%= form.submit "Remove from Library", class: "btn btn-danger" %>
