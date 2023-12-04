@@ -2,8 +2,18 @@
 <%= render 'shared/footer' %>
 <h1>MooD BooK</h1>
 
+<section class="section">
+  <div class="video-container">
+    <video autoplay muted loop id="bg-video">
+      <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
 
-<h1>Recommandations de Livres</h1>
+<div class="sections-container">
+  <section class="section" >
+    <h1>Recommandations de Livres</h1>
 
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
@@ -25,16 +35,8 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-
-
-
-<div class="video-container">
-  <video autoplay muted loop id="bg-video">
-    <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+</section>
 </div>
-
 
 <section class="mood">
   <div class="card" style="width: 18rem;">

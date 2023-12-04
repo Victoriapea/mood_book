@@ -101,3 +101,9 @@ a {
   bottom: 0;
   width: 100%;
   }
+
+  .sections-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Ajoutez un espacement entre les sections */
+  }
