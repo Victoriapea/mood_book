@@ -5,7 +5,73 @@
     <div class="home">
       <div class="content">
         <p>Mood <span>Books</span></p>
-        <button>Best Seller</button>
+        <div class="card_que" style="width: 18rem; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <div class="card-body" style="background-color: #f8f9fa; border-radius: 15px; padding: 20px;">
+      <p class="card-text" style="font-size: 1.2rem; color: #343a40;">Quelle est votre humeur du jour?</p>
+     <a href="<%= new_questionnaire_path %>" class="card-link questionnaire-link">Questionnaire</a>
+    </div>
+  </div>
       </div>
     </div>
   </section>
+
+
+<section class="cards_banner">
+    <div class="card">
+      <div class="image_banner_two"></div>
+      <div class="home_banner">
+        <div class="cnt_banner">
+          <p>New Realease.</p>
+          <button>Shop New</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="image_banner_three"></div>
+      <div class="home_banner">
+        <div class="cnt_banner">
+          <p>Pre OrdercNow.</p>
+          <button class="btn_two">Shop New</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="image_banner"></div>
+      <div class="home_banner">
+        <div class="cnt_banner">
+          <p>Top Rated.</p>
+         <button class="btn_thre">Shop New</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+<swiper-container >
+  <swiper-slide class="">
+    <div class="card">
+      <div class="image_banner"></div>
+      <div class="home_banner">
+        <div class="cnt_banner">
+          <p>Top Rated.</p>
+         <button class="btn_thre">Shop New</button>
+        </div>
+      </div>
+    </div></swiper-slide>
+  <swiper-slide> <div class="card">
+      <div class="image_banner_three"></div>
+      <div class="home_banner">
+        <div class="cnt_banner">
+          <p>Pre OrdercNow.</p>
+          <button class="btn_two">Shop New</button>
+        </div>
+      </div>
+    </div></swiper-slide>
+  <swiper-slide>Slide 3</swiper-slide>
+  ...
+</swiper-container>
