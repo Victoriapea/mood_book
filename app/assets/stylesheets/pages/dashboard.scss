@@ -1,12 +1,53 @@
-.card {
-  border-radius: 20px;
-  position:absolute;
-  left: 2%;
+h1 {
+  text-align: center;
+}
+
+
+.card-mood-dash .book-cover img {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* Ajustez selon vos besoins */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-mood-dash .book-details {
+  margin-top: 15px;
+}
+
+.card-mood-dash .toggle-switch,
+.card-mood-dash .download-button,
+.card-mood-dash .remove-button {
+  margin-top: 10px;
+}
+
+.btn {
+  /* Styles généraux pour les boutons */
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  /* Styles pour le bouton de téléchargement */
+  background-color: #463d2e;
+  color: #fff;
+}
+
+.btn-danger {
+  /* Styles pour le bouton de suppression */
+  background-color: #ac352f;
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: #a47d66;
 }
 
 // bouton toggle
 .toggle-switch {
   display: flex;
+  justify-content: center;
   align-items: center;
   font-size: 14px;
 }
@@ -54,7 +95,7 @@
 }
 
 input:checked + .toggle-slider {
-  background-color: #346abf;
+  background-color: #60563d;
 }
 
 input:checked + .toggle-slider:before {
@@ -67,4 +108,34 @@ input:checked + .toggle-slider:before {
   bottom: 10px;
   right: 10px;
   padding: 10px;
+}
+.cards-mood-dash {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card-mood-dash {
+  flex-basis: calc(33.333% - 20px);
+  flex-grow: 1;
+  max-width: calc(33.333% - 20px);
+  text-align: center;
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+.card-mood-dash:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.card-mood-dash .book-cover-dash img {
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
 }
