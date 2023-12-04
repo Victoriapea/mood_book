@@ -2,7 +2,28 @@
 
 <!-- Lien vers la page d'accueil -->
 
+<a href="<%= root_path %>">Accueil</a>
 
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3" >
+      <%= form_with url: books_index_path, method: :get, remote: true, html: {class: "d-flex" } do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Type a keyword, mood or synopsis",
+              data: { show_books_target: "input" }
+
+          %>
+        <%= submit_tag "Search", name: "", html: {class: "btn btn-primary"}%>
+      <% end %>
+        <% if params[:query].present? %>
+        <%= render 'list', books: @books %>
+        <% end %>
+    </div>
+  </div>
+</div>
 <div class="container">
   <h1 class='m-3'>Categories</h1>
 
