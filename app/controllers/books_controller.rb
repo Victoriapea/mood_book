@@ -13,7 +13,7 @@ class BooksController < ApplicationController
       sql_subquery = "name ILIKE :query OR synopsis ILIKE :query OR mood ILIKE :query OR author ILIKE :query"
       @books = @books.where(sql_subquery, query: "%#{params[:query]}%")
     end
-    @categories = ['happy', 'sad', 'excited', 'calm', 'serious']
+    @categories = ['happy', 'sad', 'excited', 'calm', 'serious', 'angry']
     @category_backgrounds = determine_category_backgrounds
 
     respond_to do |format|
