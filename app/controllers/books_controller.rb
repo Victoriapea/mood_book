@@ -12,11 +12,6 @@ class BooksController < ApplicationController
     end
     @categories = ['happy', 'sad', 'excited', 'calm', 'serious']
     @category_backgrounds = determine_category_backgrounds
-
-    respond_to do |format|
-      format.html
-      format.json {render json: @books}
-    end
   end
   def show
     @category = params[:category]

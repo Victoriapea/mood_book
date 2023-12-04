@@ -10,9 +10,7 @@
         <%= text_field_tag :query,
               params[:query],
               class: "form-control",
-              placeholder: "Type a keyword, mood or synopsis",
-              data: { show_books_target: "input" }
-
+              placeholder: "Type a keyword, mood or synopsis"
           %>
         <%= submit_tag "Search", name: "", html: {class: "btn btn-primary"}%>
       <% end %>
