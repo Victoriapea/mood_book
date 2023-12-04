@@ -5,6 +5,7 @@
   <%= flash[:notice].html_safe if flash[:notice].present? %>
 <% end %>
 
+
 <div class="cards-mood">
   <% @books.each do |book| %>
     <div class="card-mood">
@@ -32,3 +33,5 @@
     </div>
   <% end %>
 </div>
+
+

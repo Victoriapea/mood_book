@@ -1,12 +1,13 @@
 class Book < ApplicationRecord
   has_many :libraries
   has_many :users, through: :libraries
+  belongs_to :mood
 
   def self.find_books_by_category(category)
     where(category: category)
   end
 
-  enum mood: { happy: 'happy', sad: 'sad', excited: 'excited', calm: 'calm', serious: 'serious' }
+  enum mood: { happy: 'happy', sad: 'sad', excited: 'excited', calm: 'calm', serious: 'serious', angry: 'angry' }
 
   include PgSearch::Model
   pg_search_scope :search_by_name_synopsis_author_and_mood,

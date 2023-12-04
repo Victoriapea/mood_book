@@ -6,6 +6,9 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @categories = ['happy', 'sad', 'excited', 'calm', 'serious', 'angry']
+    @category_backgrounds = determine_category_backgrounds
+
     if params[:query].present?
       sql_subquery = "name ILIKE :query OR synopsis ILIKE :query OR mood ILIKE :query OR author ILIKE :query"
       @books = @books.where(sql_subquery, query: "%#{params[:query]}%")
@@ -18,6 +21,7 @@ class BooksController < ApplicationController
       format.json {render json: @books}
     end
   end
+
   def show
     @category = params[:category]
     @books = Book.find_books_by_category(@category)
@@ -30,7 +34,6 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to dashboard_path, notice: "Le livre a été supprimé avec succès", status: :see_other
   end
-
 
   private
 
@@ -45,17 +48,19 @@ class BooksController < ApplicationController
   def determine_background_image(category)
     case category
     when 'happy'
-      'url(/assets/happy.jpg)'
+      'url()'
     when 'sad'
-      'url(/assets/sad.jpg)'
+      'url()'
     when 'excited'
-      'url(/assets/excited.jpg)'
+      'url()'
     when 'calm'
-      'url(/assets/calme.jpg)'
+      'url()'
     when 'serious'
-      'url(/assets/serious.jpg)'
+      'url()'
+    when 'angry'
+      'url()'
     else
-      'url(/assets/happy.jpg)'
+      'url()'
     end
   end
 end
