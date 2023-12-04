@@ -1,8 +1,5 @@
 <%= render 'shared/navbar' %>
 
-<a href="<%= root_path %>">Accueil</a>
-
-
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-8 my-3" >
@@ -36,7 +33,7 @@
 
             <div class="card-category" style="background-image: <%= background_image %>">
                 <% if category == "happy" %>
-                <%= image_tag "happy.png" %>
+                <%= image_tag "pleurs.png" %>
                 <% elsif category == "sad" %>
                 <%= image_tag "pleurs.png" %>
                 <% elsif category == "serious" %>
