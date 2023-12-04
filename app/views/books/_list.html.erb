@@ -1,0 +1,18 @@
+<div id="books">
+  <div >
+    <% if params[:query].blank? %>
+
+      <h1 class="h3"><%= pluralize @books.count, 'book' %> available</h1>
+    <% else %>
+      <h1 class="h3"><%= pluralize @books.count, 'result' %> for <code><%= params[:query] %></code></h1>
+    <% end %>
+    <% if @books.any? %>
+    <% @books.each do |book| %>
+      <h4><%= book.name %></h4>
+      <p><%= book.synopsis %></p>
+    <% end %>
+    <% else %>
+      <em>Sorry, no books found.</em>
+    <% end %>
+  </div>
+</div>

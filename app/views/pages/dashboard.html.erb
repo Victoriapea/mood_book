@@ -1,3 +1,5 @@
+<%= render 'shared/navbar' %>
+
 <h1>Ma Bibliothèque</h1>
 
 <div class="cards-mood-dash">
@@ -13,12 +15,12 @@
 
     <!-- Toggle switch for marking as read/unread -->
     <div class="toggle-switch">
-      <span class="toggle-label-text">Lu</span>
+      <span class="toggle-label-text">Non lu</span>
       <label class="toggle">
         <input type="checkbox" <%= 'checked' if book.read %>>
         <span class="toggle-slider"></span>
       </label>
-      <span class="toggle-label-text">Non lu</span>
+      <span class="toggle-label-text">Lu</span>
     </div>
 
     <!-- Download button -->
