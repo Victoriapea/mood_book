@@ -1,4 +1,3 @@
-# app/controllers/books_controller.rb
 
 class BooksController < ApplicationController
   require 'rest-client'
@@ -9,6 +8,18 @@ class BooksController < ApplicationController
     @books = Book.all
     @categories = ['happy', 'sad', 'excited', 'calm', 'serious', 'angry']
     @category_backgrounds = determine_category_backgrounds
+
+    if params[:query].present?
+      sql_subquery = "name ILIKE :query OR synopsis ILIKE :query OR mood ILIKE :query OR author ILIKE :query"
+      @books = @books.where(sql_subquery, query: "%#{params[:query]}%")
+    end
+    @categories = ['happy', 'sad', 'excited', 'calm', 'serious']
+    @category_backgrounds = determine_category_backgrounds
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @books}
+    end
   end
 
   def show
