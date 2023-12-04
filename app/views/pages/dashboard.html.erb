@@ -1,34 +1,43 @@
-<a href="<%= root_path %>">Accueil</a>
+<h1>Ma Bibliothèque</h1>
 
-<%= render 'shared/navbar' %>
-
-<h1>Ma biblio</h1>
-
-<div class="cards-mood">
+<div class="cards-mood-dash">
   <% current_user.books.each do |book| %>
-    <div class="card-mood">
-      <div>
-        <% if book.image.present? %>
-          <img src="<%= book.image %>" alt="Book Cover">
-        <% end %>
-      </div>
-      <strong>Title:</strong> <%= book.name %><br>
+  <div class="card-mood-dash">
+  <div class="book-cover-dash">
+    <% if book.image.present? %>
+      <img src="<%= book.image %>" alt="Book Cover">
+    <% end %>
+  </div>
+  <div class="book-details-dash">
+    <h2><%= book.name %></h2>
 
-      <!-- Toggle switch for marking as read/unread -->
-      <div class="toggle-switch">
-        <span class="toggle-label-text">Lu</span>
-        <label class="toggle">
-          <input type="checkbox" <%= 'checked' if book.read %>><!-- Assuming you have a 'read' attribute in your Book model -->
-          <span class="toggle-slider"></span>
-        </label>
-        <span class="toggle-label-text">Non lu</span>
-      </div>
-
-<%= render 'shared/footer' %>
-      <!-- Form for deleting the book from the library -->
-      <%= form_with(model: book, url: library_destroy_book_path(id: book.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' }) do |form| %>
-        <%= form.submit "Remove from Library", class: "btn btn-danger" %>
-      <% end %>
+    <!-- Toggle switch for marking as read/unread -->
+    <div class="toggle-switch">
+      <span class="toggle-label-text">Lu</span>
+      <label class="toggle">
+        <input type="checkbox" <%= 'checked' if book.read %>>
+        <span class="toggle-slider"></span>
+      </label>
+      <span class="toggle-label-text">Non lu</span>
     </div>
+
+    <!-- Download button -->
+    <% if book.preview_link.present? %>
+      <div class="download-button">
+        <a href="<%= book.preview_link %>" target="_blank" download="<%= book.name.parameterize %>">
+          <button class="btn btn-primary">Télécharger</button>
+        </a>
+      </div>
+    <% end %>
+
+    <!-- Form for deleting the book from the library -->
+    <%= form_with(model: book, url: library_destroy_book_path(id: book.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' }) do |form| %>
+      <div class="remove-button">
+        <%= form.submit "Retirer de la bibliothèque", class: "btn btn-danger" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
   <% end %>
 </div>

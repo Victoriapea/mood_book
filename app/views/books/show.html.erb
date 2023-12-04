@@ -21,16 +21,8 @@
         <div class="space"></div>
         <span class="book-description"><%= book.synopsis %></span><br>
 
-        <!-- Add more details as needed -->
         <div class="space"></div>
         <span class="book-nmbr"><%= book.page_count %></span><br>
-
-
-       <% if book.preview_link.present? %>
-          <div class="space"></div> <!-- Ajout d'un espace avant le lien -->
-          <a href="<%= book.preview_link %>" target="_blank" class="styled-link">View on Google Books</a><br>
-      <% end %>
-
 
         <%= form_with(model: book, url: add_book_to_library_path(id: book.id), method: :post, class: "library-form") do |form| %>
          <div class="space"></div>
