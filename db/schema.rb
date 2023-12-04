@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_30_150037) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_04_125336) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,7 +18,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_30_150037) do
     t.string "name"
     t.string "synopsis"
     t.string "author"
-    t.string "mood"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
@@ -27,6 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_30_150037) do
     t.integer "page_count"
     t.string "preview_link"
     t.boolean "read"
+    t.bigint "mood_id"
+    t.index ["mood_id"], name: "index_books_on_mood_id"
   end
 
   create_table "libraries", force: :cascade do |t|
@@ -38,6 +39,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_30_150037) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_libraries_on_book_id"
     t.index ["user_id"], name: "index_libraries_on_user_id"
+  end
+
+  create_table "moods", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "questionnaires", force: :cascade do |t|
@@ -64,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_30_150037) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "books", "moods"
   add_foreign_key "libraries", "books"
   add_foreign_key "libraries", "users"
   add_foreign_key "questionnaires", "users"

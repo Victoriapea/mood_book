@@ -1,15 +1,55 @@
 .card-category {
   background-size: cover;
   background-position: center;
-  height: 90px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
   color: white;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin: 3.5vw;
+  margin: 1.5vw;
+  overflow: hidden;
+  position: relative;
+
+  .square-card {
+    // width: 100%;
+    // padding-bottom: 70%;
+    border-radius: inherit;
+
+  }
+
+  .card-text {
+    margin: 10px;
+  }
+
+  // border: 2px solid #6667AB;
+}
+
+.card-wrapper {
+  position: relative;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5vw;
+}
+
+.col-md-4 {
+  flex: 0 0 31%;
+  max-width: 31%;
+  padding-right: 1vw;
+  padding-left: 1vw;
+}
+
+i {
+  font-size: 100px;
+  color: #6667AB;
+
+  justify-content: center;
+  align-items: center;
 }
