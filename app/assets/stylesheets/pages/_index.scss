@@ -4,10 +4,11 @@
 
 // L'image de fond est définie dans app/assets/images/background.jpg
 body {
-  background: url('/assets/MooD BooK.png') no-repeat center center fixed;
+  //background: url('/assets/MooD BooK.png') no-repeat center center fixed;
   background-size: cover;
   margin: 0;
   font-family: 'Arial', sans-serif;
+  color: black;
 }
 
 .carousel-item {
