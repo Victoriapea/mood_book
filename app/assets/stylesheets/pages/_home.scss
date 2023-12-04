@@ -269,11 +269,10 @@ span {
     top: 13em;
   }
   .cards_banner {
-    grid-template-columns: 1fr; /* Set a single column for small screens */
-    grid-gap: 10px; /* Adjust grid gap for small screens */
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
   }
   .cnt_banner{
     padding-right: 9em;
   }
 }
-
