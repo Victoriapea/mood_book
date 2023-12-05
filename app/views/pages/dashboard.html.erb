@@ -30,6 +30,8 @@
       </div>
     <% end %>
 
+    <button class="btn btn-primary"> Laissez-un avis</button>
+
     <!-- Form for deleting the book from the library -->
     <%= form_with(model: book, url: library_destroy_book_path(id: book.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' }) do |form| %>
       <div class="remove-button">

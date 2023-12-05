@@ -6,10 +6,12 @@ Rails.application.routes.draw do
   get :dashboard, to: "pages#dashboard"
 
   resources :questionnaires, only: %i[new show create]
-  resources :books, only: [:index, :destroy]
-  get 'books/:category', to: 'books#show', as: :book_category
+  resources :books, only: %i[index destroy] do
+    resources :reviews, only: %i[new create]
+    get 'books/:category', to: 'books#show', as: :book_category
 
-  # Ajouter la route delete pour la bibliothèque
-  delete '/library/destroy_book/:id', to: 'library#destroy_book', as: 'library_destroy_book'
-  post '/library/add_book/:id', to: 'library#add_book', as: 'add_book_to_library'
+    # Ajouter la route delete pour la bibliothèque
+    delete '/library/destroy_book/:id', to: 'library#destroy_book', as: 'library_destroy_book'
+    post '/library/add_book/:id', to: 'library#add_book', as: 'add_book_to_library'
+  end
 end
