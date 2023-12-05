@@ -16,7 +16,6 @@ class LibraryController < ApplicationController
     end
   end
 
-
   def destroy_book
     @book = Book.find(params[:id])
     current_user.books.delete(@book)
@@ -25,6 +24,4 @@ class LibraryController < ApplicationController
       format.js
     end
   end
-
-
 end

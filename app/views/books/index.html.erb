@@ -45,6 +45,7 @@
                 <% elsif category == "angry" %>
                 <%= image_tag "colere.png" %>
                 <% end %>
+
               <div class="square-card"></div>
               <p class="card-text">
                 <%= link_to category.capitalize, book_category_path(category: category), class:'text-decoration-none text-black text-uppercase' %>
