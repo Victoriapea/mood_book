@@ -5,6 +5,7 @@
   <%= flash[:notice].html_safe if flash[:notice].present? %>
 <% end %>
 
+
 <div class="cards-mood">
   <% @books.each do |book| %>
     <div class="card-mood">
@@ -17,12 +18,12 @@
       <div class="book-details">
          <span class="book-title"><%= book.name %></span><br>
         <div class="space"></div>
-        <span class="book-author"><%= book.author %></span><br>
+        <span class="book-author">Auteur : <%= book.author %></span><br>
         <div class="space"></div>
-        <span class="book-description"><%= book.synopsis %></span><br>
+        <span class="book-description">Synopsis : <%= book.synopsis %></span><br>
 
         <div class="space"></div>
-        <span class="book-nmbr"><%= book.page_count %></span><br>
+        <span class="book-nmbr">Nombre de pages : <%= book.page_count %></span><br>
 
         <%= form_with(model: book, url: add_book_to_library_path(id: book.id), method: :post, class: "library-form") do |form| %>
          <div class="space"></div>
