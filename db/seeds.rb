@@ -1,6 +1,7 @@
 require 'faker'
 require 'open-uri'
 
+Review.destroy_all
 Book.destroy_all
 
 puts 'Creating user'
