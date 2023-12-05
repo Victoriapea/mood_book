@@ -281,9 +281,12 @@ span {
   align-items: center;
   flex-direction: column;
 }
-.footer .footer-title {
-  font-size: 28px;
-  font-weight: 800;
+.footer .image_footer {
+  background-image: url('logo_footer.png');
+  background-size: cover;
+  background-position: center;
+  width: 100px;
+  height: 80px;
 }
 
 
@@ -307,7 +310,10 @@ span {
   justify-content: center;
   align-items: center;
   gap: 30px;
-  font-size: 30px;
+  font-size: 15px;
+}
+.footer .menu i {
+  font-size: 20px;
 }
 .footer .menu i:hover {
   cursor: pointer;
