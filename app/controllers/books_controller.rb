@@ -1,4 +1,3 @@
-
 class BooksController < ApplicationController
   require 'rest-client'
   require 'json'
@@ -15,11 +14,6 @@ class BooksController < ApplicationController
     end
     @categories = ['happy', 'sad', 'excited', 'calm', 'serious', 'angry']
     @category_backgrounds = determine_category_backgrounds
-
-    respond_to do |format|
-      format.html
-      format.json {render json: @books}
-    end
   end
 
   def show
