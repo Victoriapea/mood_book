@@ -1,3 +1,5 @@
+<%= render 'shared/navbar' %>
+
 <% if flash[:notice].present? && flash[:book_id] %>
   <!-- Display book information -->
   <%= render partial: 'library/book_info', locals: { book: Book.find(flash[:book_id]) } %>

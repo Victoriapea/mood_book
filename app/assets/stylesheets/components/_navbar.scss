@@ -1,19 +1,145 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+a {
+  color: #000;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+/* header_nav_nav */
+
+.header_nav nav {
+  background-color: #fff;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+  width: 100%;
+  z-index: 3;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 60px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+.header_nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
 }
 
-.nav-link {
-  color: black;
+.header_nav li a {
+  display: block;
+  padding: 20px 20px;
+  border-right: 1px solid #f4f4f4;
   text-decoration: none;
 }
- 
+
+.header_nav li a:hover,
+.header_nav .menu-btn:hover {
+  transition: 1s;
+  background-color: #C18ABD;
+}
+
+.header_nav .logo {
+  display: flex;
+  align-items: center;
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* menu */
+
+.header_nav .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
+}
+.header_nav .logo img {
+  max-height: 40px; /* Ajustez la taille maximale selon vos besoins */
+  margin-right: 10px; /* Espace entre le logo et le texte, ajustez selon vos besoins */
+}
+
+/* menu icon */
+
+.header_nav .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header_nav .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.header_nav .menu-icon .navicon:before,
+.header_nav .menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header_nav .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header_nav .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header_nav .menu-btn {
+  display: none;
+}
+
+.header_nav .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header_nav .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header_nav .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header_nav .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header_nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header_nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+
+.navbar-brand img {
+  max-height: 58px;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .header_nav li {
+    float: left;
+  }
+  .header_nav li a {
+    padding: 20px 30px;
+  }
+  .header_nav .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header_nav .menu-icon {
+    display: none;
+  }
+  .avatar {
+    display: none;
+  }
+}

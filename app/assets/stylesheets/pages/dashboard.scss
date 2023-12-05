@@ -22,7 +22,6 @@ h1 {
 }
 
 .btn {
-  /* Styles généraux pour les boutons */
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
@@ -30,13 +29,11 @@ h1 {
 }
 
 .btn-primary {
-  /* Styles pour le bouton de téléchargement */
   background-color: #463d2e;
   color: #fff;
 }
 
 .btn-danger {
-  /* Styles pour le bouton de suppression */
   background-color: #ac352f;
   color: #fff;
 }
@@ -139,7 +136,7 @@ input:checked + .toggle-slider:before {
   object-fit: cover;
   border-radius: 8px;
 }
-//responsive 
+//responsive
 @media screen and (max-width: 768px) {
   .cards-mood-dash {
     flex-direction: column;
