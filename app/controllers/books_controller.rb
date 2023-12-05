@@ -1,4 +1,3 @@
-
 class BooksController < ApplicationController
   require 'rest-client'
   require 'json'

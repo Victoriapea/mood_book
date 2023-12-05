@@ -1,11 +1,14 @@
 class ReviewsController < ApplicationController
-  before_action :set_book, only: %i[new create]
-  def new
-    @book = Book.find(params[:book_id])
+
+
+  def index
+    @reviews = Review.all
     @review = Review.new
   end
 
+
   def create
+    @book = Book.find(params[:book_id])
     @review = Review.new(review_params)
     @review.user = current_user
     @review.book = @book
@@ -24,6 +27,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content, :rating)
+    params.require(:review).permit(:rating)
   end
 end
