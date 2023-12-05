@@ -19,12 +19,22 @@ class LibraryController < ApplicationController
 
 
   def destroy_book
+
+    @book = Book.find(params[:id])
+    current_user.books.delete(@book)
+    flash[:notice] = 'Book removed from library successfully.'
+    respond_to do |format|
+      format.js
+      format.html { redirect_back(fallback_location: root_path) }
+    end
+
   @book = Book.find(params[:id])
   current_user.books.delete(@book)
   flash[:notice] = 'Book removed from library successfully.'
   respond_to do |format|
     format.js
     format.html { redirect_back(fallback_location: root_path) }
+
   end
 end
 
