@@ -17,7 +17,6 @@ class LibraryController < ApplicationController
     end
   end
 
-
   def destroy_book
   @book = Book.find(params[:id])
   current_user.books.delete(@book)
@@ -25,8 +24,8 @@ class LibraryController < ApplicationController
   respond_to do |format|
     format.js
     format.html { redirect_back(fallback_location: root_path) }
-  end
-end
 
+    end
+  end
 end
 

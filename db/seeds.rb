@@ -1,6 +1,8 @@
 require 'faker'
 require 'open-uri'
 
+Book.destroy_all
+
 puts 'Creating user'
 User.create(email: "test@test.test", password: "123456")
 puts 'Done creating'
@@ -31,18 +33,27 @@ categories.each do |category|
         mood_name = moods.sample
         mood = Mood.find_or_create_by(name: mood_name)
         image_for_mood = mood_images[mood_name]
-
-        Book.create(
-          name: book_data['volumeInfo']['title'],
-          synopsis: book_data['volumeInfo']['description'] || 'No description available',
-          author: authors.join(', ').presence || 'Unknown Author',
-          mood: mood,
-          category: category,
-          image: image_thumbnail || image_for_mood,
-          page_count: book_data['volumeInfo']['pageCount'],
-          preview_link: book_data['volumeInfo']['previewLink']
-        )
+        published_date = begin
+          Date.parse(book_data['volumeInfo']['publishedDate']) if book_data['volumeInfo'].key?('publishedDate') && book_data['volumeInfo']['publishedDate'].present?
+        rescue ArgumentError, TypeError
+          nil
+        end
+        if book_data['volumeInfo']['title'] != nil && book_data['volumeInfo']['description'] != nil && image_thumbnail != nil
+          Book.create(
+            name: book_data['volumeInfo']['title'],
+            synopsis: book_data['volumeInfo']['description'] || 'No description available',
+            author: authors.join(', ').presence || 'Unknown Author',
+            mood: mood,
+            category: category,
+            image: image_thumbnail || image_for_mood,
+            page_count: book_data['volumeInfo']['pageCount'],
+            preview_link: book_data['volumeInfo']['previewLink'],
+            published_date: published_date || '2013-10-22'
+          )
+        end
       end
+
+
     else
       puts "  No books found for #{category}."
     end

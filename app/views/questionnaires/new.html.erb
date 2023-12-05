@@ -3,7 +3,7 @@
 <h1>Questionnaire</h1>
 
   <div class="container mt-5" style="width: 50rem;">
-    <%= form_for @questionnaire, url: questionnaires_path, html: { method: :post } do |form| %>
+    <%= form_with url: books_index_path, method: :get, remote: true do |form| %>
       <div class="form">
         <%= form.label :question1, 'Question 1 : Préférez-vous les livres courts ou longs ?' %>
         <div class="radio-input-wrapper">
@@ -21,17 +21,17 @@
       </div>
 
     <div class="form">
-      <%= form.label :question2, 'Question 2 : Aimez-vous lire des livres dans des genres variés ou préférez-vous vous en tenir à un genre spécifique ?' %>
+      <%= form.label :question2, 'Question 2 : "Préférez-vous des livres récemment publiés ou êtes-vous ouvert à des classiques plus anciens ?' %>
       <div class="radio-input-wrapper">
         <label class="label">
-          <%= form.radio_button :question2, 'Genres variés', id: "value-4", class: "radio-input" %>
+          <%= form.radio_button :question2, 'Récemment publiés', id: "value-4", class: "radio-input" %>
           <div class="radio-design"></div>
           <div class="label-text">Genres variés</div>
         </label>
         <label class="label">
-          <%= form.radio_button :question2, 'Genres spécifique', id: "value-5", class: "radio-input" %>
+          <%= form.radio_button :question2, 'Des classiques plus anciens', id: "value-5", class: "radio-input" %>
           <div class="radio-design"></div>
-          <div class="label-text">Genres spécifiques</div>
+          <div class="label-text">Des classiques plus anciens</div>
         </label>
       </div>
     </div>

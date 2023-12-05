@@ -6,7 +6,8 @@ class QuestionnairesController < ApplicationController
   end
 
   def create
-    @questionnaire = Questionnaire.new(questionnaire_params.merge(user: current_user))
+    @questionnaire = current_user.questionnaires.build(questionnaire_params)
+
     if @questionnaire.save
       redirect_to books_path
     else

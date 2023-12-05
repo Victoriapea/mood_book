@@ -1,7 +1,6 @@
 <%= render 'shared/navbar' %>
 
 <% if flash[:notice].present? && flash[:book_id] %>
-  <!-- Display book information -->
   <%= render partial: 'library/book_info', locals: { book: Book.find(flash[:book_id]) } %>
 <% else %>
   <%= flash[:notice].html_safe if flash[:notice].present? %>
@@ -9,7 +8,7 @@
 
 
 <div class="cards-mood">
-  <% @books.each do |book| %>
+  <% @books.sample(3).each do |book| %>
     <div class="card-mood">
       <div class="book-image">
         <% if book.image.present? %>
@@ -23,13 +22,25 @@
         <span class="book-author">Auteur : <%= book.author %></span><br>
         <div class="space"></div>
         <span class="book-description">Synopsis : <%= book.synopsis %></span><br>
+        <div class="space"></div>
+        <span class="book-date">Date de publication : <%= book.published_date %></span><br>
 
         <div class="space"></div>
         <span class="book-nmbr">Nombre de pages : <%= book.page_count %></span><br>
 
+        <div class="space"></div>
+          <% if book.reviews.any? %>
+        <span class="book-rating">
+          <% sum = 0 %>
+          <% book.reviews.each do |review|%>
+          <% sum += (review.rating.to_i) %>
+          <% end %>
+        <p>Note : <%= sum.fdiv(book.reviews.count).round(2) %><i class="fa-solid fa-star star m-2"></i></p></span><br>
+          <% end %>
+
         <%= form_with(model: book, url: add_book_to_library_path(id: book.id), method: :post, class: "library-form") do |form| %>
          <div class="space"></div>
-          <%= form.submit "Add to Library" %>
+          <%= form.submit "Add to Library", class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>

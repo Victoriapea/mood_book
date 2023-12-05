@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row m-2 d-none" data-toggle-target="togglableElement">
+    <div class="col-xs-4">
+      <%= simple_form_for [book, @review] do |f| %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Noter le livre", input_html: {data: {controller: "star-rating"}}, class:'m-2' %>
+        <%= f.submit "Envoyer votre note", class:"m-2"%>
+      <% end %>
+    </div>
+  </div>
+</div>

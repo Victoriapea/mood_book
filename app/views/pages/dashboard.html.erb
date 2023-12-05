@@ -23,6 +23,24 @@
       <span class="toggle-label-text">Lu</span>
     </div>
 
+    <div class="m-2">
+    <% sum = 0 %>
+    <% book.reviews.each do |review|%>
+    <% sum += (review.rating.to_i) %>
+    <% end %>
+    <p>Note: <%= sum.fdiv(book.reviews.count).round(2) %><i class="fa-solid fa-star star m-2"></i></p>
+    </div>
+
+
+    <div data-controller="toggle" class="m-2">
+
+
+      <button data-action="click->toggle#fire" class="btn btn-primary">Laisser une note</button>
+        <%= render "shared/form", book: book, review: @review %>
+    </div>
+
+ <%#    <%= button_to "Laisser une note", new_book_review_path(book[:id]) %>
+
     <!-- Download button -->
     <% if book.preview_link.present? %>
       <div class="download-button">
@@ -43,3 +61,4 @@
 
   <% end %>
 </div>
+  
