@@ -23,6 +23,7 @@ class LibraryController < ApplicationController
     flash[:notice] = 'Book removed from library successfully.'
     respond_to do |format|
       format.js
+      format.html { redirect_back(fallback_location: root_path) }
     end
   end
 
