@@ -2,8 +2,8 @@ require 'faker'
 require 'open-uri'
 
 Review.destroy_all
-Book.destroy_all
 Library.destroy_all
+Book.destroy_all
 
 puts 'Creating user'
 User.create(email: "test@test.test", password: "123456")
