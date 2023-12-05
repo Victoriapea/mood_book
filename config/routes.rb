@@ -12,6 +12,4 @@ Rails.application.routes.draw do
   resources :books, only: %i[index destroy] do
     resources :reviews, only: %i[create]
   end
-
-    # Ajouter la route delete pour la bibliothèque
 end
