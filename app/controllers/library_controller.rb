@@ -4,6 +4,7 @@ class LibraryController < ApplicationController
 
     if current_user.books.include?(@book)
       flash[:notice] = 'Book already in library.'
+      flash[:book_id] = @book.id
     else
       current_user.books << @book
       flash[:notice] = 'Book added to library successfully.'
@@ -22,6 +23,7 @@ class LibraryController < ApplicationController
     flash[:notice] = 'Book removed from library successfully.'
     respond_to do |format|
       format.js
+      format.html { redirect_back(fallback_location: root_path) }
     end
   end
 end

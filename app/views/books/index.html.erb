@@ -20,8 +20,39 @@
   </div>
 </div>
 <div class="container">
-  <h1 class='m-3'>Recherche par émotions</h1>
 
+
+<div class="cards-mood">
+  <% @books.each do |book| %>
+    <div class="card-mood">
+      <div class="book-image">
+        <% if book.image.present? %>
+          <img src="<%= book.image %>" alt="Book Cover">
+        <% end %>
+      </div>
+
+      <div class="book-details">
+         <span class="book-title"><%= book.name %></span><br>
+        <div class="space"></div>
+        <span class="book-author">Auteur : <%= book.author %></span><br>
+        <div class="space"></div>
+        <span class="book-description">Synopsis : <%= book.synopsis %></span><br>
+        <div class="space"></div>
+        <span class="book-date">Date de publication : <%= book.published_date %></span><br>
+
+        <div class="space"></div>
+        <span class="book-nmbr">Nombre de pages : <%= book.page_count %></span><br>
+
+        <%= form_with(model: book, url: add_book_to_library_path(id: book.id), method: :post, class: "library-form") do |form| %>
+         <div class="space"></div>
+          <%= form.submit "Add to Library" %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+   </div>
+
+  <h1 class='m-3'>Recherche par émotions</h1>
   <div class="row">
     <% @categories.each_slice(3).with_index do |categories_slice, index| %>
       <% categories_slice.each do |category| %>

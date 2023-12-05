@@ -8,7 +8,7 @@
 
 
 <div class="cards-mood">
-  <% @books.each do |book| %>
+  <% @books.sample(3).each do |book| %>
     <div class="card-mood">
       <div class="book-image">
         <% if book.image.present? %>
@@ -22,6 +22,8 @@
         <span class="book-author">Auteur : <%= book.author %></span><br>
         <div class="space"></div>
         <span class="book-description">Synopsis : <%= book.synopsis %></span><br>
+        <div class="space"></div>
+        <span class="book-date">Date de publication : <%= book.published_date %></span><br>
 
         <div class="space"></div>
         <span class="book-nmbr">Nombre de pages : <%= book.page_count %></span><br>
