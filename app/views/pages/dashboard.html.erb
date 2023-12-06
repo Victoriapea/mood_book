@@ -11,7 +11,7 @@
     <% end %>
   </div>
   <div class="book-details-dash">
-    <h2 class="name_book"><%= book.name %></h2>
+    <h2><%= book.name %></h2>
 
     <!-- Toggle switch for marking as read/unread -->
     <div class="toggle-switch">
@@ -24,7 +24,7 @@
     </div>
 
     <div class="m-2">
-     <% if book.reviews.any? %>
+    <% if book.reviews.any? %>
     <% sum = 0 %>
     <% book.reviews.each do |review|%>
     <% sum += (review.rating.to_i) %>
@@ -33,9 +33,7 @@
      <% end %>
     </div>
 
-
-
-    <% if book.preview_link.present? %>
+   <% if book.preview_link.present? %>
       <div class="download-button">
         <a href="<%= book.preview_link %>" target="_blank" download="<%= book.name.parameterize %>">
           <button class="btn-p">Télécharger</button>
@@ -56,6 +54,4 @@
 </div>
 
   <% end %>
-
-
 </div>
