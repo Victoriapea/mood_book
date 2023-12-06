@@ -122,7 +122,6 @@ a {
   max-height: 58px;
 }
 
-/* 48em = 768px */
 
 @media (min-width: 48em) {
   .header_nav li {
@@ -139,7 +138,5 @@ a {
   .header_nav .menu-icon {
     display: none;
   }
-  .avatar {
-    display: none;
-  }
+
 }
