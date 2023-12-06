@@ -11,7 +11,7 @@
     <% end %>
   </div>
   <div class="book-details-dash">
-    <h2><%= book.name %></h2>
+    <h2 class="name_book"><%= book.name %></h2>
 
     <!-- Toggle switch for marking as read/unread -->
     <div class="toggle-switch">
@@ -31,6 +31,8 @@
     <p>Note: <%= sum.fdiv(book.reviews.count).round(2) %><i class="fa-solid fa-star star m-2"></i></p>
     </div>
 
+    <% if book.preview_link.present? %>
+
    <% if book.preview_link.present? %>
       <div class="download-button">
         <a href="<%= book.preview_link %>" target="_blank" download="<%= book.name.parameterize %>">
@@ -43,12 +45,13 @@
         <%= render "shared/form", book: book, review: @review %>
     </div>
 
+
  <%#    <%= button_to "Laisser une note", new_book_review_path(book[:id]) %>
 
     <!-- Download button -->
 
 
-    <!-- Form for deleting the book from the library -->
+
     <%= form_with(model: book, url: library_destroy_book_path(id: book.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' }) do |form| %>
       <div class="remove-button">
         <%= form.submit "Retirer de la bibliothèque", class: "btn btn-danger" %>
@@ -58,4 +61,6 @@
 </div>
 
   <% end %>
+
+
 </div>

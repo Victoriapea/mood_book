@@ -251,23 +251,12 @@ span {
   text-align: center;
   color: white;
 }
-@media only screen and (max-width: 768px) {
-  .content {
-    left: 6em;
-    top: 13em;
-  }
-  .cards_banner {
-    grid-template-columns: 1fr;
-    grid-gap: 10px;
-  }
-  .cnt_banner{
-    padding-right: 9em;
-}
-}
+
 // footer
 
 
 .footer {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 15px;
   margin-top: 20px;
   display: flex;
@@ -312,4 +301,26 @@ span {
 .footer .menu i:hover {
   cursor: pointer;
   color: rgb(58, 58, 58);;
+}
+.star {
+  color: #FFB900;
+  font-size: 20px;
+}
+
+
+
+
+// responsive
+@media only screen and (max-width: 768px) {
+  .content {
+    left: 6em;
+    top: 13em;
+  }
+  .cards_banner {
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+  .cnt_banner{
+    padding-right: 9em;
+}
 }
