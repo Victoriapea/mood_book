@@ -23,7 +23,7 @@ class BooksController < ApplicationController
     if params[:question1].present? || params[:question2].present? || params[:question3].present?
     @books = questions_results(@books, params)
     end
-    
+
   end
 
 
@@ -52,7 +52,7 @@ class BooksController < ApplicationController
     if params[:question3].present? && params[:question3] == 'Pas du tout'
       books = books.where('rating < ?', 3)
     end
-return books.sample(1)
+    return books.sample(1)
   end
 
   def show

@@ -96,7 +96,7 @@
 
         <%= form_with(model: book, url: add_book_to_library_path(id: book.id), method: :post, class: "library-form") do |form| %>
          <div class="space"></div>
-          <%= form.submit "Add to Library" %>
+          <%= form.submit "Ajouter à la bibliothèque", class:"btn-p" %>
         <% end %>
       </div>
     </div>
