@@ -1,4 +1,4 @@
 class Review < ApplicationRecord
   belongs_to :user
-  belongs_to :book, dependent: :destroy
+  belongs_to :book
 end

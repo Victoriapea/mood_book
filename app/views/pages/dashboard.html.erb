@@ -24,12 +24,16 @@
     </div>
 
     <div class="m-2">
+     <% if book.reviews.any? %>
     <% sum = 0 %>
     <% book.reviews.each do |review|%>
     <% sum += (review.rating.to_i) %>
     <% end %>
     <p>Note: <%= sum.fdiv(book.reviews.count).round(2) %><i class="fa-solid fa-star star m-2"></i></p>
+     <% end %>
     </div>
+
+
 
     <% if book.preview_link.present? %>
       <div class="download-button">
