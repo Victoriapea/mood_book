@@ -1,7 +1,7 @@
 <%= render 'shared/navbar' %>
 
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row-sea justify-content-center">
     <div class="m-2">
       <%= form_with url: books_index_path, method: :get, remote: true, class: "d-flex" do %>
         <%= text_field_tag :query,
@@ -31,7 +31,7 @@
 
             <div class="card-category" style="background-image: <%= background_image %>">
                 <% if category == "happy" %>
-                <%= image_tag "happys.png" %>
+                <%= image_tag "happys.png", class: "happy-image" %>
                 <% elsif category == "sad" %>
                 <%= image_tag "triste.png" %>
                 <% elsif category == "serious" %>
@@ -46,7 +46,7 @@
 
               <div class="square-card"></div>
               <p class="card-text">
-                <%= link_to category.capitalize, book_category_path(category: category), class:'text-decoration-none text-black text-uppercase' %>
+                <%= link_to category.capitalize, book_category_path(category: category), class:'text-mood' %>
               </p>
             </div>
           </div>
@@ -60,7 +60,7 @@
     <% end %>
   </div>
 </div>
-
+<div class="title-reco"> Les livres recommandés à lire </div>
 
 
 <div class="cards-mood">
