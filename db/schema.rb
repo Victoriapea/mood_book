@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_04_142700) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_06_100026) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_04_142700) do
     t.string "preview_link"
     t.boolean "read"
     t.bigint "mood_id"
+    t.integer "rating"
     t.index ["mood_id"], name: "index_books_on_mood_id"
   end
 

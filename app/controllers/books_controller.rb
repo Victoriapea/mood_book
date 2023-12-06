@@ -54,7 +54,7 @@ class BooksController < ApplicationController
   def show
     @category = params[:category]
     @books = Book.find_books_by_category(@category)
-
+    
     puts "Category: #{@category}"
   end
 
