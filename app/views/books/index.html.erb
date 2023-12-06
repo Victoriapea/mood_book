@@ -41,6 +41,16 @@
         <div class="space"></div>
         <span class="book-nmbr">Nombre de pages : <%= book.page_count %></span><br>
 
+        <div class="space"></div>
+          <% if book.rating %>
+        <span class="book-rating">
+          <% if book.rating.present? %>
+            <p>Note : <%= book.rating %><i class="fa-solid fa-star star m-2"></i></p>
+          <% end %>
+        </span>
+        <% end %>
+        </div>
+
         <%= form_with(model: book, url: add_book_to_library_path(id: book.id), method: :post, class: "library-form") do |form| %>
          <div class="space"></div>
           <%= form.submit "Add to Library" %>

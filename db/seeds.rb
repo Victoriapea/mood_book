@@ -4,6 +4,7 @@ require 'open-uri'
 Review.destroy_all
 Library.destroy_all
 Book.destroy_all
+User.destroy_all
 
 puts 'Creating user'
 User.create(email: "test@test.test", password: "123456")
@@ -28,6 +29,7 @@ categories.each do |category|
   if response.code == 200
     books_data = JSON.parse(response.body)['items']
     puts "Books for #{category}:"
+
     if books_data.present?
       books_data.each do |book_data|
         image_thumbnail = book_data['volumeInfo']['imageLinks']&.fetch('thumbnail', nil)
@@ -40,8 +42,9 @@ categories.each do |category|
         rescue ArgumentError, TypeError
           nil
         end
+
         if book_data['volumeInfo']['title'] != nil && book_data['volumeInfo']['description'] != nil && image_thumbnail != nil
-          Book.create(
+          book = Book.create(
             name: book_data['volumeInfo']['title'],
             synopsis: book_data['volumeInfo']['description'] || 'No description available',
             author: authors.join(', ').presence || 'Unknown Author',
@@ -50,12 +53,17 @@ categories.each do |category|
             image: image_thumbnail || image_for_mood,
             page_count: book_data['volumeInfo']['pageCount'],
             preview_link: book_data['volumeInfo']['previewLink'],
-            published_date: published_date || '2013-10-22'
+            published_date: published_date || '2013-10-22',
+            rating: rand(1..5)
           )
+
+          # Review.create(
+          #   rating: rand(1..5),
+          #   user_id: 1,
+          #   book_id: book.id
+          # )
         end
       end
-
-
     else
       puts "  No books found for #{category}."
     end
