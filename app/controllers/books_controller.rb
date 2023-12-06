@@ -41,20 +41,20 @@ class BooksController < ApplicationController
       books = books.where('published_date < ?', Date.new(2015, 1, 1))
     end
 
-    # if params[:question3].present? && params[:question3] == 'Plutôt oui'
-    #   books = books.reviews.where('rating >= ?', 3)
-    # end
+    if params[:question3].present? && params[:question3] == 'Plutôt oui'
+      books = books.where('rating >= ?', 3)
+    end
 
-    # if params[:question3].present? && params[:question3] == 'Pas du tout'
-    #   books = books.reviews.where('rating < ?', 3)
-    # end
+    if params[:question3].present? && params[:question3] == 'Pas du tout'
+      books = books.where('rating < ?', 3)
+    end
     return books
   end
 
   def show
     @category = params[:category]
     @books = Book.find_books_by_category(@category)
-    
+
     puts "Category: #{@category}"
   end
 

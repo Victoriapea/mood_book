@@ -9,7 +9,7 @@
               class: "form-control",
               placeholder: "Chercher par titre, auteur, synopsis, mood"
           %>
-        <%= submit_tag "Rechercher", name: "", class: "btn btn-primary"%>
+        <%= submit_tag "Rechercher", name: "", class: "btn-p"%>
       <% end %>
         <% if params[:query].present? %>
         <%= render 'list', books: @books %>
