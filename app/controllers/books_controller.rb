@@ -12,7 +12,7 @@ class BooksController < ApplicationController
     @books = questions_results(@books, params)
 
     if params[:query].present?
-      sql_subquery = "name ILIKE :query OR synopsis ILIKE :query OR category ILIKE :query OR author ILIKE :query"
+      sql_subquery = "name ILIKE :query OR synopsis ILIKE :query OR mood ILIKE :query OR author ILIKE :query"
       @books = @books.where(sql_subquery, query: "%#{params[:query]}%")
     end
     @categories = ['happy', 'sad', 'excited', 'calm', 'serious', 'angry']
@@ -41,20 +41,20 @@ class BooksController < ApplicationController
       books = books.where('published_date < ?', Date.new(2015, 1, 1))
     end
 
-    # if params[:question3].present? && params[:question3] == 'Plutôt oui'
-    #   books = books.reviews.where('rating >= ?', 3)
-    # end
+    if params[:question3].present? && params[:question3] == 'Plutôt oui'
+      books = books.where('rating >= ?', 3)
+    end
 
-    # if params[:question3].present? && params[:question3] == 'Pas du tout'
-    #   books = books.reviews.where('rating < ?', 3)
-    # end
-    return books
+    if params[:question3].present? && params[:question3] == 'Pas du tout'
+      books = books.where('rating < ?', 3)
+    end
+    return books.sample(1)
   end
 
   def show
     @category = params[:category]
     @books = Book.find_books_by_category(@category)
-    
+
     puts "Category: #{@category}"
   end
 
