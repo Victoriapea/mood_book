@@ -9,7 +9,6 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
 
-    @books = questions_results(@books, params)
 
     if params[:query].present?
       sql_subquery = "name ILIKE :query OR synopsis ILIKE :query OR category ILIKE :query OR author ILIKE :query"
@@ -21,7 +20,12 @@ class BooksController < ApplicationController
       format.html
       format.json { render json: @books }
     end
+    if params[:question1].present? || params[:question2].present? || params[:question3].present?
+    @books = questions_results(@books, params)
+    end
+    
   end
+
 
   def questions_results(books, params)
 
@@ -41,20 +45,20 @@ class BooksController < ApplicationController
       books = books.where('published_date < ?', Date.new(2015, 1, 1))
     end
 
-    # if params[:question3].present? && params[:question3] == 'Plutôt oui'
-    #   books = books.reviews.where('rating >= ?', 3)
-    # end
+    if params[:question3].present? && params[:question3] == 'Plutôt oui'
+      books = books.where('rating >= ?', 3)
+    end
 
-    # if params[:question3].present? && params[:question3] == 'Pas du tout'
-    #   books = books.reviews.where('rating < ?', 3)
-    # end
-    return books
+    if params[:question3].present? && params[:question3] == 'Pas du tout'
+      books = books.where('rating < ?', 3)
+    end
+return books.sample(1)
   end
 
   def show
     @category = params[:category]
     @books = Book.find_books_by_category(@category)
-    
+
     puts "Category: #{@category}"
   end
 
