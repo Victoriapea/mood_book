@@ -32,6 +32,8 @@
     </div>
 
     <% if book.preview_link.present? %>
+
+   <% if book.preview_link.present? %>
       <div class="download-button">
         <a href="<%= book.preview_link %>" target="_blank" download="<%= book.name.parameterize %>">
           <button class="btn btn-primary">Télécharger</button>
@@ -42,6 +44,13 @@
       <button data-action="click->toggle#fire" class="btn btn-primary">Laisser une note</button>
         <%= render "shared/form", book: book, review: @review %>
     </div>
+
+
+ <%#    <%= button_to "Laisser une note", new_book_review_path(book[:id]) %>
+
+    <!-- Download button -->
+
+
 
     <%= form_with(model: book, url: library_destroy_book_path(id: book.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' }) do |form| %>
       <div class="remove-button">
