@@ -84,7 +84,13 @@ h1 {
   font-weight: 900;
   transition: .3s;
 }
-
+.name_book {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 20px;
+  font-size: 600;
+}
 .radio-input:checked ~ .label-text {
   color: hsl(0, 0%, 40%);
 }
@@ -98,6 +104,10 @@ h1 {
   .form {
     font-size: 18px;
   }
-
+  .ques {
+    max-width: 100%; /* Adjust this value as needed */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
   /* Add more responsive styles as needed */
 }

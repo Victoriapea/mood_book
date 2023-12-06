@@ -34,12 +34,12 @@
     <% if book.preview_link.present? %>
       <div class="download-button">
         <a href="<%= book.preview_link %>" target="_blank" download="<%= book.name.parameterize %>">
-          <button class="btn btn-primary">Télécharger</button>
+          <button class="btn-p">Télécharger</button>
         </a>
       </div>
     <% end %>
     <div data-controller="toggle" class="m-2">
-      <button data-action="click->toggle#fire" class="btn btn-primary">Laisser une note</button>
+      <button data-action="click->toggle#fire" class="btn-p">Laisser une note</button>
         <%= render "shared/form", book: book, review: @review %>
     </div>
 

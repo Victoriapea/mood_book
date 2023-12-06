@@ -23,13 +23,13 @@ h1 {
   margin-top: 10px;
 }
 
-.btn {
+.btn-p{
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
 }
 
-.btn-primary {
+.btn-p{
   background-color: #95a5a6;
   color: #fff;
 }
@@ -42,10 +42,10 @@ h1 {
 .btn-danger:hover {
   background-color: #ef0d24;
 }
-.btn-primary:hover {
+
+.btn-p:hover{
   background-color: #bdc3c7;
 }
-
 // bouton toggle
 .toggle-switch {
   display: flex;
