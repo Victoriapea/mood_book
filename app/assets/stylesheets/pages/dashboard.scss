@@ -119,9 +119,6 @@ input:checked + .toggle-slider:before {
 }
 
 .card-mood-dash {
-  flex-basis: calc(33.333% - 20px);
-  flex-grow: 1;
-  max-width: calc(33.333% - 20px);
   text-align: center;
   margin: 10px;
   padding: 15px;
@@ -150,8 +147,7 @@ input:checked + .toggle-slider:before {
   }
 
   .card-mood-dash {
-    flex-basis: 100%;
-    max-width: 100%;
+    width: 300px;
     margin: 10px 0;
   }
   .name_book {
