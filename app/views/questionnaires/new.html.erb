@@ -2,10 +2,10 @@
 
 <h1>Questionnaire</h1>
 
-  <div class="container mt-5" style="width: 50rem;">
+  <div class="container">
     <%= form_with url: books_index_path, method: :get, remote: true do |form| %>
       <div class="form">
-        <%= form.label :question1, 'Question 1 : Préférez-vous les livres courts ou longs ?' %>
+        <%= form.label :question1, 'Question 1 : Préférez-vous les livres courts ou longs ?',class:"ques" %>
         <div class="radio-input-wrapper">
           <label class="label">
             <%= form.radio_button :question1, 'Livres longs', id: "value-2", class: "radio-input" %>
@@ -21,7 +21,7 @@
       </div>
 
     <div class="form">
-      <%= form.label :question2, 'Question 2 : "Préférez-vous des livres récemment publiés ou êtes-vous ouvert à des classiques plus anciens ?' %>
+      <%= form.label :question2, 'Question 2 : Préférez-vous des livres récemment publiés ou êtes-vous ouvert à des classiques plus anciens ?',class:"ques" %>
       <div class="radio-input-wrapper">
         <label class="label">
           <%= form.radio_button :question2, 'Récemment publiés', id: "value-4", class: "radio-input" %>
@@ -37,12 +37,12 @@
     </div>
 
     <div class="form">
-      <%= form.label :question3, 'Question 3 : Êtes-vous attiré par des livres qui ont été bien noté ?' %>
+      <%= form.label :question3, 'Question 3 : Êtes-vous attiré par des livres qui ont été bien noté ?',class:"ques" %>
       <div class="radio-input-wrapper">
         <label class="label">
           <%= form.radio_button :question3, 'Plutôt oui', id: "value-6", class: "radio-input" %>
           <div class="radio-design"></div>
-          <div class="label-text">Plutôt oui</div>  
+          <div class="label-text">Plutôt oui</div>
         </label>
         <label class="label">
           <%= form.radio_button :question3, 'Pas du tout', id: "value-7", class: "radio-input" %>

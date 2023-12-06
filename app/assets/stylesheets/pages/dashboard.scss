@@ -30,19 +30,20 @@ h1 {
 }
 
 .btn-primary {
-  background-color: #C18ABD;
+  background-color: #95a5a6;
   color: #fff;
 }
 
+
 .btn-danger {
-  background-color: #C82333;
+  background-color: #c0392b;
   color: #fff;
 }
 .btn-danger:hover {
   background-color: #ef0d24;
 }
 .btn-primary:hover {
-  background-color: #d461cc;
+  background-color: #bdc3c7;
 }
 
 // bouton toggle
@@ -96,7 +97,7 @@ h1 {
 }
 
 input:checked + .toggle-slider {
-  background-color: #60563d;
+  background-color: #7f8c8d;
 }
 
 input:checked + .toggle-slider:before {
