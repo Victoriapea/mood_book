@@ -10,7 +10,9 @@ h1 {
   object-fit: cover;
   border-radius: 8px;
 }
-
+.card-mood-dash .name_book {
+  margin-top: 10px;
+}
 .card-mood-dash .book-details {
   margin-top: 15px;
 }
@@ -25,20 +27,22 @@ h1 {
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
 }
 
 .btn-primary {
-  background-color: #463d2e;
+  background-color: #C18ABD;
   color: #fff;
 }
 
 .btn-danger {
-  background-color: #ac352f;
+  background-color: #C82333;
   color: #fff;
 }
+.btn-danger:hover {
+  background-color: #ef0d24;
+}
 .btn-primary:hover {
-  background-color: #a47d66;
+  background-color: #d461cc;
 }
 
 // bouton toggle
@@ -148,5 +152,10 @@ input:checked + .toggle-slider:before {
     flex-basis: 100%;
     max-width: 100%;
     margin: 10px 0;
+  }
+  .name_book {
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 600;
   }
 }
