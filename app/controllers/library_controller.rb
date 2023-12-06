@@ -3,11 +3,11 @@ class LibraryController < ApplicationController
     @book = Book.find(params[:id])
 
     if current_user.books.include?(@book)
-      flash[:notice] = 'Book already in library.'
+      flash[:notice] = 'Livre dèjà dans la bibliothèque.'
       flash[:book_id] = @book.id
     else
       current_user.books << @book
-      flash[:notice] = 'Book added to library successfully.'
+      flash[:notice] = 'Livre ajouté à la bibliothèque avec succès.'
       flash[:book_id] = @book.id
     end
 
@@ -20,12 +20,10 @@ class LibraryController < ApplicationController
   def destroy_book
   @book = Book.find(params[:id])
   current_user.books.delete(@book)
-  flash[:notice] = 'Book removed from library successfully.'
+  flash[:notice] = 'Livre retiré de la bibliothèque avec succès.'
   respond_to do |format|
     format.js
     format.html { redirect_back(fallback_location: root_path) }
-
     end
   end
 end
-
