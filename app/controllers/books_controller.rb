@@ -24,7 +24,7 @@ class BooksController < ApplicationController
       format.html
       format.json {render json: @books}
     end
-    
+
   end
 
   def questions_results(books, params)
@@ -43,6 +43,14 @@ class BooksController < ApplicationController
 
     if params[:question2].present? && params[:question2] == 'Des classiques plus anciens'
       books = books.where('published_date < ?', Date.new(2015, 1, 1))
+    end
+
+    if params[:question3].present? && params[:question3] == 'Plutôt oui'
+      books = books.where('rating >= ?', 3)
+    end
+
+    if params[:question3].present? && params[:question3] == 'Pas du tout'
+      books = books.where('rating < ?', 3)
     end
     return books.sample(1)
   end
