@@ -8,23 +8,19 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+
     @books = questions_results(@books, params)
-    @categories = ['happy', 'sad', 'excited', 'calm', 'serious', 'angry']
-    @category_backgrounds = determine_category_backgrounds
 
     if params[:query].present?
-      sql_subquery = "name ILIKE :query OR synopsis ILIKE :query OR mood ILIKE :query OR author ILIKE :query"
+      sql_subquery = "name ILIKE :query OR synopsis ILIKE :query OR category ILIKE :query OR author ILIKE :query"
       @books = @books.where(sql_subquery, query: "%#{params[:query]}%")
     end
-
     @categories = ['happy', 'sad', 'excited', 'calm', 'serious', 'angry']
     @category_backgrounds = determine_category_backgrounds
-
     respond_to do |format|
       format.html
-      format.json {render json: @books}
+      format.json { render json: @books }
     end
-
   end
 
   def questions_results(books, params)
@@ -45,14 +41,14 @@ class BooksController < ApplicationController
       books = books.where('published_date < ?', Date.new(2015, 1, 1))
     end
 
-    if params[:question3].present? && params[:question3] == 'Plutôt oui'
-      books = books.where('rating >= ?', 3)
-    end
+    # if params[:question3].present? && params[:question3] == 'Plutôt oui'
+    #   books = books.reviews.where('rating >= ?', 3)
+    # end
 
-    if params[:question3].present? && params[:question3] == 'Pas du tout'
-      books = books.where('rating < ?', 3)
-    end
-    return books.sample(1)
+    # if params[:question3].present? && params[:question3] == 'Pas du tout'
+    #   books = books.reviews.where('rating < ?', 3)
+    # end
+    return books
   end
 
   def show
