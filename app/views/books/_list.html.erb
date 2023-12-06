@@ -1,51 +1,9 @@
-<div id="books">
-
-
 <div class="cards-mood">
   <div>
     <% if params[:query].blank? %>
-
       <h1 class="h3"><%= pluralize @books.count, 'book' %> available</h1>
     <% else %>
       <h1 class="h3"><%= pluralize @books.count, 'resultat' %> pour <code><%= params[:query] %></code></h1>
     <% end %>
   </div>
-  <% @books.each do |book| %>
-    <div class="card-mood">
-      <div class="book-image">
-        <% if book.image.present? %>
-          <img src="<%= book.image %>" alt="Book Cover">
-        <% end %>
-      </div>
-
-      <div class="book-details">
-         <span class="book-title"><%= book.name %></span><br>
-        <div class="space"></div>
-        <span class="book-author">Auteur : <%= book.author %></span><br>
-        <div class="space"></div>
-        <span class="book-description">Synopsis : <%= book.synopsis %></span><br>
-        <div class="space"></div>
-        <span class="book-date">Date de publication : <%= book.published_date %></span><br>
-
-        <div class="space"></div>
-        <span class="book-nmbr">Nombre de pages : <%= book.page_count %></span><br>
-
-        <div class="space"></div>
-          <% if book.reviews.any? %>
-        <span class="book-rating">
-          <% sum = 0 %>
-          <% book.reviews.each do |review|%>
-          <% sum += (review.rating.to_i) %>
-          <% end %>
-        <p>Note : <%= sum.fdiv(book.reviews.count).round(2) %><i class="fa-solid fa-star star m-2"></i></p></span><br>
-          <% end %>
-
-        <%= form_with(model: book, url: add_book_to_library_path(id: book.id), method: :post, class: "library-form") do |form| %>
-         <div class="space"></div>
-          <%= form.submit "Add to Library" %>
-        <% end %>
-      </div>
-    </div>
-    <% end %>
-   </div>
-  </div>
+</div>

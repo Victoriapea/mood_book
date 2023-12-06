@@ -9,10 +9,9 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
 
-    @books = questions_results(@books, params)
 
     if params[:query].present?
-      sql_subquery = "name ILIKE :query OR synopsis ILIKE :query OR mood ILIKE :query OR author ILIKE :query"
+      sql_subquery = "name ILIKE :query OR synopsis ILIKE :query OR category ILIKE :query OR author ILIKE :query"
       @books = @books.where(sql_subquery, query: "%#{params[:query]}%")
     end
     @categories = ['happy', 'sad', 'excited', 'calm', 'serious', 'angry']
@@ -21,7 +20,12 @@ class BooksController < ApplicationController
       format.html
       format.json { render json: @books }
     end
+    if params[:question1].present? || params[:question2].present? || params[:question3].present?
+    @books = questions_results(@books, params)
+    end
+    
   end
+
 
   def questions_results(books, params)
 
@@ -48,7 +52,7 @@ class BooksController < ApplicationController
     if params[:question3].present? && params[:question3] == 'Pas du tout'
       books = books.where('rating < ?', 3)
     end
-    return books.sample(1)
+return books.sample(1)
   end
 
   def show
