@@ -19,6 +19,49 @@
 </div>
 <div>
 
+<h1 class='m-3'>Recherche par émotions</h1>
+  <div class="row">
+    <% @categories.each_slice(3).with_index do |categories_slice, index| %>
+      <% categories_slice.each do |category| %>
+        <% background_image = @category_backgrounds[category] %>
+        <%# <%= image_tag  %>
+
+        <div class="col-md-4 mb-4">
+          <div class="card-wrapper">
+
+            <div class="card-category" style="background-image: <%= background_image %>">
+                <% if category == "happy" %>
+                <%= image_tag "happys.png" %>
+                <% elsif category == "sad" %>
+                <%= image_tag "triste.png" %>
+                <% elsif category == "serious" %>
+                <%= image_tag "serieux.png" %>
+                <% elsif category == "excited" %>
+                <%= image_tag "rire.png" %>
+                <% elsif category == "calm" %>
+                <%= image_tag "happy.png" %>
+                <% elsif category == "angry" %>
+                <%= image_tag "colere.png" %>
+                <% end %>
+
+              <div class="square-card"></div>
+              <p class="card-text">
+                <%= link_to category.capitalize, book_category_path(category: category), class:'text-decoration-none text-black text-uppercase' %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <% if index == 0 %>
+        </div>
+        <div class="row">
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
 
 <div class="cards-mood">
   <% @books.each do |book| %>
@@ -59,45 +102,3 @@
     </div>
     <% end %>
    </div>
-
-  <h1 class='m-3'>Recherche par émotions</h1>
-  <div class="row">
-    <% @categories.each_slice(3).with_index do |categories_slice, index| %>
-      <% categories_slice.each do |category| %>
-        <% background_image = @category_backgrounds[category] %>
-        <%# <%= image_tag  %>
-
-        <div class="col-md-4 mb-4">
-          <div class="card-wrapper">
-
-            <div class="card-category" style="background-image: <%= background_image %>">
-                <% if category == "happy" %>
-                <%= image_tag "pleurs.png" %>
-                <% elsif category == "sad" %>
-                <%= image_tag "pleurs.png" %>
-                <% elsif category == "serious" %>
-                <%= image_tag "choc.png" %>
-                <% elsif category == "excited" %>
-                <%= image_tag "baiser.png" %>
-                <% elsif category == "calm" %>
-                <%= image_tag "colere.png" %>
-                <% elsif category == "angry" %>
-                <%= image_tag "colere.png" %>
-                <% end %>
-
-              <div class="square-card"></div>
-              <p class="card-text">
-                <%= link_to category.capitalize, book_category_path(category: category), class:'text-decoration-none text-black text-uppercase' %>
-              </p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
-      <% if index == 0 %>
-        </div>
-        <div class="row">
-      <% end %>
-    <% end %>
-  </div>
-</div>
