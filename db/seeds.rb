@@ -1,8 +1,8 @@
 require 'faker'
 require 'open-uri'
 
-Review.destroy_all
 Library.destroy_all
+Review.destroy_all
 Book.destroy_all
 
 
