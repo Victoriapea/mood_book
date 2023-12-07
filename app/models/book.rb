@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   has_many :libraries
   has_many :users, through: :libraries
   belongs_to :mood
-  
+
   def self.find_books_by_category(category)
     where(category: category)
   end
