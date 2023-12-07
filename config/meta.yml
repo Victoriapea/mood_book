@@ -1,19 +1,5 @@
-<<<<<<< HEAD
-# config/meta.yml
-
-meta_product_name: “Mood Book”
-
-meta_title: “Mood Book – Les émotions mènent à la lecture”
-
-meta_description: “Envie de lire un livre taillé en fonction de tes émotions? Mood Book t'aidera à trouver ton bonheur!”
-
-meta_image: “Logo-Mood-Book.png” # should exist in `app/assets/images/`
-
-twitter_account: “@product_twitter_account” # required for Twitter Cards
-=======
 meta_product_name: "Mood Book"
 meta_title: "Mood Book – Les émotions mènent à la lecture"
 meta_description: "Envie de lire un livre taillé en fonction de tes émotions? Mood Book t'aidera à trouver ton bonheur!"
 meta_image: "Logo-Mood-Book.png" # should exist in `app/assets/images/`
 twitter_account: “@product_twitter_account”
->>>>>>> 1622039388aae86b136183d38f300121aa6345fa

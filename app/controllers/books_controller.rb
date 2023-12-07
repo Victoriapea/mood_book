@@ -78,7 +78,7 @@ class BooksController < ApplicationController
 
   def determine_background_image(category)
     case category
-    when 'happy'
+    when 'Content'
       'url()'
     when 'sad'
       'url()'
