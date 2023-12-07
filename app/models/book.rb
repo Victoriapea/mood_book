@@ -18,8 +18,7 @@ class Book < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-
-    def read
-      read_attribute(:read)
-    end
+  def read
+    read_attribute(:read)
+  end
 end
