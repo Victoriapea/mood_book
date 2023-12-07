@@ -77,7 +77,19 @@
         <div class="space"></div>
         <span class="book-author">Auteur : <%= book.author %></span><br>
         <div class="space"></div>
-        <span class="book-description">Synopsis : <%= book.synopsis %></span><br>
+
+          <span class="book-description" id="synopsis<%= book.id %>">
+            Synopsis : <%= truncate(book.synopsis, length: 200, separator: ' ') %>
+          </span>
+          <span id="read-more-link<%= book.id %>">
+            <span href="#" onclick="toggleSynopsis(<%= book.id %>)">Lire la suite</span>
+          </span>
+          <span class="full-synopsis" id="full-synopsis<%= book.id %>" style="display: none;">
+            <%= book.synopsis %>
+          </span>
+
+          <br>
+
         <div class="space"></div>
         <span class="book-date">Date de publication : <%= book.published_date %></span><br>
 
@@ -102,3 +114,30 @@
     </div>
     <% end %>
    </div>
+
+
+<script>
+  document.addEventListener('click', function(event) {
+    if (event.target && event.target.id.startsWith('read-more-link')) {
+      var bookId = event.target.id.replace('read-more-link', '');
+      toggleSynopsis(bookId);
+    }
+  });
+
+  function toggleSynopsis(bookId) {
+    var synopsis = document.getElementById("synopsis" + bookId);
+    var readMoreLink = document.getElementById("read-more-link" + bookId);
+    var fullSynopsis = document.getElementById("full-synopsis" + bookId);
+
+    if (synopsis.style.display === "none" || !synopsis.style.display) {
+      synopsis.style.display = "inline";
+    } else {
+      synopsis.style.display = "none";
+      fullSynopsis.style.display = "inline";
+      readMoreLink.style.display="none";
+      fullSynopsis.style.color="#555";
+      fullSynopsis.style.fontSize = "14px";
+      fullSynopsis.style.fontWeight = "400";
+    }
+  }
+</script>
