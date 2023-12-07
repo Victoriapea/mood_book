@@ -3,7 +3,7 @@
 <h1>Ma Bibliothèque</h1>
 
 <div class="cards-mood-dash">
-  <% current_user.books.each do |book| %>
+  <% current_user.books.reverse_each do |book| %>
   <div class="card-mood-dash">
   <div class="book-cover-dash">
     <% if book.image.present? %>
